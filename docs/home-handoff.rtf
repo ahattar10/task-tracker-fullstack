@@ -1,0 +1,96 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}}
+\fs24
+\b Task Tracker Fullstack - Home Handoff\b0\par
+\par
+\b Date\b0\par
+2026-06-09\par
+\par
+\b Goal\b0\par
+Continue this project at home with zero blockers.\par
+\par
+\b Project Location\b0\par
+C:\\Users\\a_hat\\OneDrive\\Desktop\\task-tracker-fullstack\par
+\par
+\b What Is Already Done\b0\par
+1) Project structure exists: frontend, backend, docs, infra\par
+2) README created and linked to roadmap\par
+3) Full 14-day roadmap added to docs\\project-plan.md\par
+4) Backend Day 2 scaffold created with FastAPI app and health endpoint\par
+5) Backend environment template and dependency file added\par
+\par
+\b Files Created/Updated\b0\par
+- README.md\par
+- docs\\project-plan.md\par
+- backend\\requirements.txt\par
+- backend\\.env.example\par
+- backend\\app\\main.py\par
+- backend\\app\\core\\config.py\par
+- backend\\app\\__init__.py\par
+- backend\\app\\core\\__init__.py\par
+\par
+\b Current Backend Code Summary\b0\par
+- GET /health returns status and environment\par
+- GET / returns service message\par
+- App config reads APP_NAME, APP_ENV, APP_HOST, APP_PORT from environment\par
+\par
+\b Current Constraint On Work Computer\b0\par
+In this work terminal session, python/node/npm/git were not available in PATH, so app runtime testing and git push were not completed here.\par
+\par
+\b Home Setup (One-Time)\b0\par
+Install these tools at home if missing:\par
+- Git\par
+- Python 3.11+\par
+- Node.js LTS (includes npm)\par
+- Docker Desktop\par
+\par
+\b Home Start Steps (Copy/Paste)\b0\par
+1) Open terminal and go to project\par
+cd C:\\Users\\a_hat\\OneDrive\\Desktop\\task-tracker-fullstack\par
+\par
+2) Verify tools\par
+git --version\par
+python --version\par
+node --version\par
+npm --version\par
+docker --version\par
+\par
+3) Run backend\par
+cd backend\par
+python -m venv .venv\par
+.\\.venv\\Scripts\\Activate.ps1\par
+pip install -r requirements.txt\par
+Copy-Item .env.example .env\par
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000\par
+\par
+4) Verify API\par
+Open browser: http://127.0.0.1:8000/health\par
+Expected JSON includes status=ok\par
+\par
+\b Connect To GitHub (When Ready)\b0\par
+Repo URL: https://github.com/ahattar10/task-tracker-fullstack\par
+\par
+If you do not have the repo locally yet:\par
+git clone https://github.com/ahattar10/task-tracker-fullstack.git\par
+cd task-tracker-fullstack\par
+\par
+If you already have it locally, sync first:\par
+git pull origin main\par
+\par
+Then commit and push your changes:\par
+git add .\par
+git commit -m "chore: day 1 setup and day 2 backend scaffold"\par
+git push origin main\par
+\par
+\b Recommended Next Coding Step\b0\par
+After backend runs successfully, continue Day 3:\par
+- Add Postgres connection\par
+- Add Task model\par
+- Add CRUD endpoints\par
+\par
+\b Quick Session Resume Prompt\b0\par
+When you get home, paste this into Copilot Chat:\par
+"Resume task-tracker-fullstack from docs/home-handoff.rtf and docs/project-plan.md. Continue Day 2 verification, then start Day 3 Postgres integration with clean structure and commands."\par
+\par
+\b End Of Handoff\b0\par
+}
