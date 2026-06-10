@@ -4,12 +4,14 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 TaskStatus = Literal["todo", "in_progress", "done"]
+TaskPriority = Literal["low", "medium", "high"]
 
 
 class TaskBase(BaseModel):
     title: str = Field(..., min_length=1, max_length=200)
     description: str | None = Field(default=None, max_length=10_000)
     status: TaskStatus = "todo"
+    priority: TaskPriority = "medium"
 
 
 class TaskCreate(TaskBase):
@@ -20,6 +22,7 @@ class TaskUpdate(BaseModel):
     title: str | None = Field(default=None, min_length=1, max_length=200)
     description: str | None = Field(default=None, max_length=10_000)
     status: TaskStatus | None = None
+    priority: TaskPriority | None = None
 
 
 class TaskRead(TaskBase):
@@ -29,6 +32,13 @@ class TaskRead(TaskBase):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class TaskListResponse(BaseModel):
+    items: list[TaskRead]
+    total: int
+    page: int
+    pages: int
 
 
 class UserRegister(BaseModel):

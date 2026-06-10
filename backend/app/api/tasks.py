@@ -1,11 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from math import ceil
+
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.auth import get_current_user
 from app.db import get_session
 from app.models import Task, User
-from app.schemas import TaskCreate, TaskRead, TaskUpdate
+from app.schemas import (
+    TaskCreate,
+    TaskListResponse,
+    TaskPriority,
+    TaskRead,
+    TaskStatus,
+    TaskUpdate,
+)
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
@@ -23,17 +32,45 @@ async def create_task(
     return task
 
 
-@router.get("", response_model=list[TaskRead])
+@router.get("", response_model=TaskListResponse)
 async def list_tasks(
+    page: int = Query(default=1, ge=1),
+    limit: int = Query(default=20, ge=1, le=100),
+    status_filter: TaskStatus | None = Query(default=None, alias="status"),
+    priority: TaskPriority | None = Query(default=None),
+    search: str | None = Query(default=None, min_length=1, max_length=200),
     current_user: User = Depends(get_current_user),
     session: AsyncSession = Depends(get_session),
-) -> list[Task]:
+) -> TaskListResponse:
+    filters = [Task.user_id == current_user.id]
+
+    if status_filter is not None:
+        filters.append(Task.status == status_filter)
+
+    if priority is not None:
+        filters.append(Task.priority == priority)
+
+    if search is not None:
+        search_term = f"%{search.strip()}%"
+        filters.append(
+            (Task.title.ilike(search_term)) | (Task.description.ilike(search_term))
+        )
+
+    total_result = await session.execute(select(Task.id).where(*filters))
+    total = len(list(total_result.scalars().all()))
+
+    offset = (page - 1) * limit
     result = await session.execute(
         select(Task)
-        .where(Task.user_id == current_user.id)
+        .where(*filters)
         .order_by(Task.created_at.desc())
+        .offset(offset)
+        .limit(limit)
     )
-    return list(result.scalars().all())
+    items = list(result.scalars().all())
+
+    pages = ceil(total / limit) if total > 0 else 0
+    return TaskListResponse(items=items, total=total, page=page, pages=pages)
 
 
 @router.get("/{task_id}", response_model=TaskRead)

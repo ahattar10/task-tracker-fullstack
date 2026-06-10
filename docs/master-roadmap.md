@@ -6,7 +6,7 @@
 - ✅ Day 2: Backend Scaffold (/health endpoint)
 - ✅ Day 3: Postgres + Task Model + CRUD
 - ✅ Day 4: Authentication
-- 🔜 Day 5: API Quality
+- ✅ Day 5: API Quality
 
 ---
 
@@ -116,18 +116,18 @@ Done check:
 Time: 3-5 hrs | Difficulty: Medium
 
 Step 1: Request Validation
-- [ ] Pydantic schemas for all request bodies
-- [ ] Proper HTTP status codes everywhere
-- [ ] Consistent error format: { "detail": "message", "status_code": X }
+- [x] Pydantic schemas for all request bodies
+- [x] Proper HTTP status codes everywhere
+- [x] Consistent error format: { "detail": "message", "status_code": X }
 
 Step 2: Pagination
-- [ ] GET /tasks?page=1&limit=20
-- [ ] Return: { items: [...], total: 45, page: 1, pages: 3 }
+- [x] GET /tasks?page=1&limit=20
+- [x] Return: { items: [...], total: 45, page: 1, pages: 3 }
 
 Step 3: Filtering
-- [ ] GET /tasks?status=completed
-- [ ] GET /tasks?priority=high
-- [ ] GET /tasks?search=keyword (search title + description)
+- [x] GET /tasks?status=done
+- [x] GET /tasks?priority=high
+- [x] GET /tasks?search=keyword (search title + description)
 
 Done check:
 - Invalid inputs return clear error messages

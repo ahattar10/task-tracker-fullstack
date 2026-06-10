@@ -37,7 +37,8 @@ Authorization: Bearer {{token}}
 {
   "title": "Write Day 2 summary",
   "description": "Document what we shipped today",
-  "status": "todo"
+  "status": "todo",
+  "priority": "medium"
 }
 
 ### Get one task
@@ -50,8 +51,25 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "status": "in_progress"
+  "status": "in_progress",
+  "priority": "high"
 }
+
+### List tasks (paginated)
+GET {{host}}/tasks?page=1&limit=20
+Authorization: Bearer {{token}}
+
+### List tasks (status filter)
+GET {{host}}/tasks?status=done
+Authorization: Bearer {{token}}
+
+### List tasks (priority filter)
+GET {{host}}/tasks?priority=high
+Authorization: Bearer {{token}}
+
+### List tasks (search)
+GET {{host}}/tasks?search=summary
+Authorization: Bearer {{token}}
 
 ### Delete a task
 DELETE {{host}}/tasks/1

@@ -45,23 +45,23 @@ Makes the backend easier to use, easier to debug, and safer for frontend integra
 
 ## Execution Checklist
 
-- [ ] Review `app/schemas.py` and confirm request models are strict enough
-- [ ] Confirm create/update endpoints return validation errors for invalid payloads
-- [ ] Standardize response/error format where needed
-- [ ] Confirm status codes are correct and consistent (`200`, `201`, `204`, `400`, `401`, `404`, `409`, `422`)
+- [x] Review `app/schemas.py` and confirm request models are strict enough
+- [x] Confirm create/update endpoints return validation errors for invalid payloads
+- [x] Standardize response/error format where needed
+- [x] Confirm status codes are correct and consistent (`200`, `201`, `204`, `400`, `401`, `404`, `409`, `422`)
 
-- [ ] Add pagination query params to `GET /tasks` (`page`, `limit`)
-- [ ] Return paginated payload shape with metadata (for example: `items`, `total`, `page`, `pages`)
-- [ ] Validate boundary cases (`page < 1`, `limit <= 0`, very large `limit`)
+- [x] Add pagination query params to `GET /tasks` (`page`, `limit`)
+- [x] Return paginated payload shape with metadata (for example: `items`, `total`, `page`, `pages`)
+- [x] Validate boundary cases (`page < 1`, `limit <= 0`, very large `limit`)
 
-- [ ] Add filtering query params to `GET /tasks`
-- [ ] Verify status filter (`/tasks?status=completed`)
-- [ ] Verify priority filter (`/tasks?priority=high`)
-- [ ] Verify keyword search (`/tasks?search=keyword`)
+- [x] Add filtering query params to `GET /tasks`
+- [x] Verify status filter (`/tasks?status=done`)
+- [x] Verify priority filter (`/tasks?priority=high`)
+- [x] Verify keyword search (`/tasks?search=keyword`)
 
-- [ ] Verify combined pagination + filter behavior
-- [ ] Verify auth still enforced for all task routes
-- [ ] Capture request/response evidence for at least 5 checks
+- [x] Verify combined pagination + filter behavior
+- [x] Verify auth still enforced for all task routes
+- [x] Capture request/response evidence for at least 5 checks
 
 ---
 
@@ -75,7 +75,7 @@ Use Swagger at `http://127.0.0.1:8000/docs` or `backend/requests.http` and valid
 
 1. invalid create/update body returns validation details
 2. `GET /tasks?page=1&limit=5` returns paginated response
-3. `GET /tasks?status=completed`
+3. `GET /tasks?status=done`
 4. `GET /tasks?priority=high`
 5. `GET /tasks?search=test`
 
