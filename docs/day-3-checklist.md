@@ -41,14 +41,14 @@ Demonstrates SQL usage, schema migration workflow, and backend data integration.
 
 ## Execution Checklist
 
-- [ ] Start database container
+- [x] Start database container
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
 docker compose -f .\infra\docker-compose.yml up -d db
 ```
 
-- [ ] Start backend API (recommended for work machine)
+- [x] Start backend API (recommended for work machine)
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
@@ -61,14 +61,14 @@ Alternative command if local backend `.venv` is allowed:
 .\.venv\Scripts\python.exe -m app.dev_server
 ```
 
-- [ ] Apply latest migration
+- [x] Apply latest migration
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
 alembic upgrade head
 ```
 
-- [ ] Verify Task CRUD against Postgres
+- [x] Verify Task CRUD against Postgres
 
 Use `http://127.0.0.1:8000/docs` or `backend/requests.http`.
 
@@ -79,9 +79,9 @@ Use `http://127.0.0.1:8000/docs` or `backend/requests.http`.
 5. Delete with `DELETE /tasks/{id}`
 6. Confirm deleted task returns 404 on `GET /tasks/{id}`
 
-- [ ] Capture evidence in `docs/day-3-evidence-log.md`
+- [x] Capture evidence in `docs/day-3-evidence-log.md`
 
-- [ ] Run automated smoke test (optional but recommended)
+- [x] Run automated smoke test (optional but recommended)
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
@@ -101,6 +101,10 @@ Suggested evidence to capture:
 - Successful delete response (204)
 - Not found response after delete (404)
 - Smoke test output from `scripts/day3-smoke-test.ps1` (optional)
+
+Validation note (2026-06-10):
+- Re-validated with an auth-aware automated regression sequence after Day 4 auth protections.
+- Status results: REGISTER=201, LOGIN=200, CREATE=201, LIST=200, GET_ONE=200, UPDATE=200, DELETE=204, GET_AFTER_DELETE=404.
 
 ---
 
