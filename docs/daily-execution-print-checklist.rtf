@@ -1,0 +1,281 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}}
+\fs22
+\b Task Tracker Fullstack - Daily Execution Print Checklist\b0\par
+Version: 2026-06-10\par
+\par
+\b How to Use This Sheet (Every Day)\b0\par
+1) Read the day section fully before starting.\par
+2) Execute tasks in listed order.\par
+3) Log proof in evidence log (for build/validation days).\par
+4) Run Day Completion Gate before marking done.\par
+5) Update roadmap/checklist only after checks pass.\par
+\par
+\b Standard End-of-Day Definition (All Days)\b0\par
+- Planned tasks complete or explicitly deferred with reason.\par
+- Required validation executed.\par
+- Evidence/documentation updated.\par
+- Git clean and synced (unless explicitly documented exception).\par
+\par
+\b Day 1 - Plan and Setup\b0\par
+Do this first:\par
+- Create repo and local project folder.\par
+- Create folders: frontend, backend, docs, infra.\par
+Then do this:\par
+- Add README with goal and MVP scope.\par
+- Add planning docs: project-plan, project-architecture, api-contract.\par
+- Initialize git, commit baseline, push to main.\par
+Day complete when:\par
+- Repo structure exists and README is committed.\par
+\par
+\b Day 2 - Backend Scaffold\b0\par
+Do this first:\par
+- Create FastAPI entrypoint.\par
+- Add GET /health endpoint.\par
+Then do this:\par
+- Add config loading in backend/app/core/config.py.\par
+- Start backend and verify /health response.\par
+- Update setup/troubleshooting docs with actual commands.\par
+Day complete when:\par
+- GET /health returns status ok in development.\par
+\par
+\b Day 3 - Database + CRUD\b0\par
+Do this first:\par
+- Start Postgres container.\par
+- Apply latest Alembic migration.\par
+Then do this:\par
+- Verify task CRUD end-to-end (create/list/get/update/delete/get-after-delete).\par
+- Run day3 smoke test script.\par
+- Record evidence in day-3-evidence-log.md.\par
+Day complete when:\par
+- CRUD works against Postgres and smoke test passes.\par
+\par
+\b Day 4 - Authentication\b0\par
+Do this first:\par
+- Implement users table/model and register endpoint.\par
+Then do this:\par
+- Implement login endpoint with JWT token.\par
+- Protect task routes with auth dependency and ownership checks.\par
+- Run auth smoke checks (register/login/auth required/ownership behavior).\par
+- Record results in day-4-evidence-log.md.\par
+Day complete when:\par
+- Register/login/protected routes behave correctly (401/409 paths included).\par
+\par
+\b Day 5 - API Quality\b0\par
+Do this first:\par
+- Validate request schemas and status codes.\par
+Then do this:\par
+- Add pagination support.\par
+- Add filtering/search support.\par
+- Validate error format consistency.\par
+- Record proof in day-5-evidence-log.md.\par
+Day complete when:\par
+- Validation, pagination, and filtering all verified.\par
+\par
+\b Day 6 - Frontend Scaffold\b0\par
+Do this first:\par
+- Create React + TypeScript app.\par
+- Install react-router-dom and axios.\par
+- Create folder structure: components/pages/services/hooks.\par
+Then do this:\par
+- Add routes: /login, /register, /tasks, /tasks/:id.\par
+- Build base layout (header/sidebar/main).\par
+- Create login and register forms with validation.\par
+- Call backend auth endpoints and store JWT in localStorage.\par
+- Redirect to /tasks on success and show errors on failure.\par
+- Add GA4 page_view, user_registered, user_login events.\par
+Day complete when:\par
+- Frontend runs, auth pages render, login/register works with backend.\par
+\par
+\b Day 7 - Task UI + API Integration\b0\par
+Do this first:\par
+- Build task list UI and fetch tasks with auth header.\par
+Then do this:\par
+- Add filters/search/pagination controls.\par
+- Add create/edit task forms and validation.\par
+- Add delete with confirmation.\par
+- Implement loading/empty/error/success states.\par
+- Add GA4 events: task_created/task_updated/task_deleted/task_completed.\par
+Day complete when:\par
+- Full task CRUD works from browser with all states covered.\par
+\par
+\b Day 8 - UX Polish\b0\par
+Do this first:\par
+- Add skeleton and spinner UX.\par
+Then do this:\par
+- Add empty and error states for major flows.\par
+- Add protected route behavior and logout flow.\par
+Day complete when:\par
+- Loading/empty/error/success states are all visible and correct.\par
+\par
+\b Day 9 - Dockerize Services\b0\par
+Do this first:\par
+- Create backend and frontend Dockerfiles.\par
+Then do this:\par
+- Create compose for backend/frontend/postgres with volume and envs.\par
+- Run full stack with docker compose up --build.\par
+- Validate health endpoint and CRUD via containerized app.\par
+Day complete when:\par
+- Full stack runs via Docker and works after clean reclone test.\par
+\par
+\b Day 10 - Reliability\b0\par
+Do this first:\par
+- Add .env.example and verify .gitignore policy.\par
+Then do this:\par
+- Add persistence and health checks to compose setup.\par
+- Validate restart persistence.\par
+Day complete when:\par
+- Fresh clone startup and restart persistence both pass.\par
+\par
+\b Day 11 - Automated Testing\b0\par
+Do this first:\par
+- Implement backend tests for auth and task behavior.\par
+Then do this:\par
+- Add frontend tests for task list/form/login behavior.\par
+- Run pytest and frontend test command.\par
+Day complete when:\par
+- Backend and frontend test suites pass.\par
+\par
+\b Day 12 - CI/CD (GitHub Actions)\b0\par
+Do this first:\par
+- Create CI workflow file.\par
+Then do this:\par
+- Add backend and frontend test jobs.\par
+- Add optional lint job and badge update.\par
+Day complete when:\par
+- Push triggers CI and all checks pass with green badge.\par
+\par
+\b Day 13 - Deployment\b0\par
+Do this first:\par
+- Deploy backend and set environment variables.\par
+Then do this:\par
+- Run migrations in deployed environment.\par
+- Deploy frontend and verify live health + CRUD.\par
+- Verify GA4 events in production.\par
+Day complete when:\par
+- Live URL works and key features pass in prod.\par
+\par
+\b Day 14 - Portfolio Packaging\b0\par
+Do this first:\par
+- Finalize README with visuals/badges/quick start.\par
+Then do this:\par
+- Add ADRs, Postman collection, CONTRIBUTING.\par
+Day complete when:\par
+- Recruiter can understand quickly and developer can run quickly.\par
+\par
+\b Day 15 - AI Parse (Backend)\b0\par
+Do this first:\par
+- Add OpenAI package and API key support.\par
+Then do this:\par
+- Build parse endpoint and robust error handling.\par
+Day complete when:\par
+- Natural language parse works and error/no-auth cases are correct.\par
+\par
+\b Day 16 - AI Parse (Frontend)\b0\par
+Do this first:\par
+- Build AI input component and hook.\par
+Then do this:\par
+- Add mode toggle and editable preview before create.\par
+Day complete when:\par
+- User can parse then edit then create task.\par
+\par
+\b Day 17 - AI Suggestions\b0\par
+Do this first:\par
+- Build suggestions endpoint and prompt logic.\par
+Then do this:\par
+- Build suggestion UI and caching.\par
+- Add GA4 suggestion events.\par
+Day complete when:\par
+- Suggestions render and refresh behavior is correct.\par
+\par
+\b Day 18 - AI Polish\b0\par
+Do this first:\par
+- Improve AI state handling and loading UX.\par
+Then do this:\par
+- Cover edge cases and timeout behavior.\par
+- Verify GA4 real-time events.\par
+Day complete when:\par
+- AI success/failure/loading/empty/rate-limit states all work.\par
+\par
+\b Day 19 - AI Docs + Tests + Deploy\b0\par
+Do this first:\par
+- Update README/ADR/Postman for AI features.\par
+Then do this:\par
+- Add AI backend/frontend tests and redeploy.\par
+- Validate AI on live environment.\par
+Day complete when:\par
+- Live AI flows work and tests pass in CI.\par
+\par
+\b Day 20-21 - Portfolio Site Update\b0\par
+Do this first:\par
+- Update project card/skills/contact links/resume availability.\par
+Then do this:\par
+- Ensure GA4 tracking active on portfolio.\par
+Day complete when:\par
+- Portfolio clearly presents project and links are functional.\par
+\par
+\b Day 22 - Subdomain Setup\b0\par
+Do this first:\par
+- Configure DNS CNAME and Vercel custom domain.\par
+Then do this:\par
+- Verify SSL and mobile behavior for both domains.\par
+Day complete when:\par
+- app subdomain and root domain both resolve correctly.\par
+\par
+\b Day 23 - Resume Update\b0\par
+Do this first:\par
+- Add project bullets and updated skills.\par
+Then do this:\par
+- Add portfolio/GitHub links and validate PDF export.\par
+Day complete when:\par
+- Resume is updated and downloadable as correct PDF.\par
+\par
+\b Day 24-25 - Video Walkthrough\b0\par
+Do this first:\par
+- Record 3-5 minute walkthrough using script outline.\par
+Then do this:\par
+- Upload and add link to README + portfolio.\par
+Day complete when:\par
+- Video is published and linked in both places.\par
+\par
+\b Day 26 - Blog + Lighthouse\b0\par
+Do this first:\par
+- Publish technical blog post.\par
+Then do this:\par
+- Run lighthouse audit, capture screenshots, add to README.\par
+Day complete when:\par
+- Blog link and lighthouse section are present.\par
+\par
+\b Day 27 - Final Review\b0\par
+Do this first:\par
+- Validate must-have list (live app, tests, README, reliability).\par
+Then do this:\par
+- Validate should-have and nice-to-have items.\par
+- Run full system test list end-to-end.\par
+Day complete when:\par
+- Must-have criteria are all satisfied and verified.\par
+\par
+\b Day 28+ - Apply\b0\par
+Do this first:\par
+- Prepare application package (resume/portfolio/github/video/blog links).\par
+Then do this:\par
+- Update LinkedIn headline and featured section.\par
+Day complete when:\par
+- Application-ready package is reusable for each job application.\par
+\par
+\b End-of-Day Sign-Off Block (Print and Fill)\b0\par
+Day: __________\par
+Date: __________\par
+Scope Completed: Yes / No\par
+Validation Completed: Yes / No\par
+Evidence Updated: Yes / No\par
+Roadmap/Checklist Updated: Yes / No\par
+Git Clean + Synced: Yes / No\par
+Blockers (if any): ________________________________\par
+Final Gate Result: PASS / FAIL\par
+\par
+\b Required Companion Docs\b0\par
+- docs/day-completion-gate.md\par
+- docs/day-evidence-log-template.md\par
+- docs/master-roadmap.md\par
+}
