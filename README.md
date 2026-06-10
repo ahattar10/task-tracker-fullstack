@@ -35,6 +35,8 @@ Build a full-stack task management app with:
 - [Setup and run guide](docs/setup-run-guide.md)
 - [Troubleshooting notes](docs/troubleshooting-notes.md)
 - [Testing checklist](docs/testing-checklist.md)
+- [Day completion gate](docs/day-completion-gate.md)
+- [Day evidence log template](docs/day-evidence-log-template.md)
 - [Day 1 checklist](docs/day-1-checklist.md)
 - [Day 2 checklist](docs/day-2-checklist.md)
 - [Day 3 checklist](docs/day-3-checklist.md)

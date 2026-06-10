@@ -58,10 +58,12 @@ If a checklist changes in this docs folder, mirror the same process update in `b
 - Backend setup and run steps: `setup-run-guide.md`
 - Work-machine policy-safe venv workflow: `setup-run-guide.md` and `troubleshooting-notes.md`
 - Git and GitHub setup/sync commands: `setup-run-guide.md`
+- Day close quality gate (required): `day-completion-gate.md`
+- Evidence log starter template: `day-evidence-log-template.md`
 
 ## Review Later Note
 
 - Review whether to add "canonical source" notes at the top of binder-only guides in `binder for project`.
 - Keep binder files as backup/reference, with main source of truth in this repo's `docs/` folder.
 - Added on 2026-06-10 for follow-up.
-- Ask me later: re-sync binder copies of `doc-index.md`, `setup-run-guide.md`, and `troubleshooting-notes.md` to match latest main docs.
+- Completed on 2026-06-10: re-synced binder copies of `doc-index.md`, `setup-run-guide.md`, and `troubleshooting-notes.md`.
