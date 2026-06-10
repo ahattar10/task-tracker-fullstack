@@ -21,6 +21,14 @@ Medium
 
 Demonstrates SQL usage, schema migration workflow, and backend data integration.
 
+## Read Order
+
+1. Confirm Day 2 checklist is complete.
+2. Read `docs/setup-run-guide.md` Day 3 run block.
+3. Execute this checklist.
+4. Capture results in `docs/day-3-evidence-log.md`.
+5. Use `docs/troubleshooting-notes.md` only if blocked.
+
 ---
 
 ## Prerequisites
@@ -85,3 +93,12 @@ Suggested evidence to capture:
 - Successful update response (200)
 - Successful delete response (204)
 - Not found response after delete (404)
+
+---
+
+## What's Next (Day 4)
+
+- Add authentication endpoints (`/auth/register`, `/auth/login`)
+- Issue and validate JWT tokens
+- Protect task routes so only authenticated users can access their tasks
+- Add/update auth documentation and testing evidence

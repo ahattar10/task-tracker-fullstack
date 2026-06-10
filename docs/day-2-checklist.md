@@ -21,6 +21,13 @@ Easy to Medium
 
 Proves backend service setup and runtime verification skills.
 
+## Read Order
+
+1. Confirm Day 1 checklist is complete.
+2. Read `docs/setup-run-guide.md` backend run steps.
+3. Execute this checklist.
+4. Use `docs/troubleshooting-notes.md` only if blocked.
+
 ---
 
 ## Execution Checklist

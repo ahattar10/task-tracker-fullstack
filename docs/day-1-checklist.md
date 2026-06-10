@@ -21,6 +21,12 @@ Easy
 
 Shows planning and scoping before coding.
 
+## Read Order
+
+1. Read `docs/setup-run-guide.md` for baseline setup commands.
+2. Execute this checklist.
+3. Use `docs/troubleshooting-notes.md` only if blocked.
+
 ---
 
 ## Execution Checklist
