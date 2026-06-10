@@ -1,0 +1,32 @@
+### Variables
+@host = http://127.0.0.1:8000
+
+### Health
+GET {{host}}/health
+
+### List tasks
+GET {{host}}/tasks
+
+### Create a task
+POST {{host}}/tasks
+Content-Type: application/json
+
+{
+  "title": "Write Day 2 summary",
+  "description": "Document what we shipped today",
+  "status": "todo"
+}
+
+### Get one task
+GET {{host}}/tasks/1
+
+### Update a task
+PUT {{host}}/tasks/1
+Content-Type: application/json
+
+{
+  "status": "in_progress"
+}
+
+### Delete a task
+DELETE {{host}}/tasks/1

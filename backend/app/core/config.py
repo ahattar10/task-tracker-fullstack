@@ -1,13 +1,22 @@
-from dataclasses import dataclass
-import os
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-@dataclass(frozen=True)
-class Settings:
-    app_name: str = os.getenv("APP_NAME", "Task Tracker API")
-    app_env: str = os.getenv("APP_ENV", "development")
-    app_host: str = os.getenv("APP_HOST", "127.0.0.1")
-    app_port: int = int(os.getenv("APP_PORT", "8000"))
+class Settings(BaseSettings):
+    app_name: str = "Task Tracker API"
+    app_env: str = "development"
+    app_host: str = "127.0.0.1"
+    app_port: int = 8000
+
+    database_url: str = (
+        "postgresql+psycopg://taskuser:taskpass@localhost:5432/tasktracker"
+    )
+    database_echo: bool = False
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
 
 settings = Settings()

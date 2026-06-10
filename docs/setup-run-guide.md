@@ -34,41 +34,53 @@ The backend currently has:
 - Alembic migrations under `backend/alembic/`
 - Task CRUD endpoints under `/tasks` (POST, GET list, GET one, PUT, DELETE)
 
-## How To Run The Backend At Home
+## Rebuild From Zero (Backend)
 
-From the project root:
+Use this exact sequence on a fresh machine or fresh clone.
+
+Step 1: Open a terminal in the repository root.
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+```
+
+Step 2: Create and activate backend virtual environment.
 
 ```powershell
 cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+```
+
+Step 3: Install dependencies and environment file.
+
+```powershell
 pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-Start Postgres (Docker Desktop must be running):
+Step 4: Start Postgres (Docker Desktop must be running).
 
 ```powershell
 docker compose -f ..\infra\docker-compose.yml up -d db
 ```
 
-Apply database migrations:
+Step 5: Run database migrations.
 
 ```powershell
 alembic upgrade head
 ```
 
-Start the API:
+Step 6: Start the API (recommended command).
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+Alternative (also valid):
 
 ```powershell
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Machine-verified command path (uses backend venv Python explicitly):
-
-```powershell
-cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
 Then open:
@@ -95,6 +107,8 @@ Expected response:
 ```json
 {"status":"ok","environment":"development"}
 ```
+
+If this response appears, Day 2 backend scaffold is confirmed working.
 
 ## Testing The Task Endpoints
 

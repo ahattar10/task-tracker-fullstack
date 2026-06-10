@@ -33,15 +33,19 @@ The backend currently starts with:
 
 - `GET /` for a simple root message
 - `GET /health` for service health checks
-- environment-based config in `app/core/config.py`
+- environment-based config in `app/core/config.py` (pydantic-settings, `.env`)
+- async SQLAlchemy 2.0 engine in `app/db.py` (psycopg3 driver)
+- `Task` ORM model in `app/models.py`
+- Pydantic request/response schemas in `app/schemas.py`
+- Task CRUD router in `app/api/tasks.py` mounted at `/tasks`
+- Alembic migrations in `backend/alembic/`
 
 Planned backend additions:
 
 - user registration and login
 - JWT authentication
-- task CRUD endpoints
-- database models and migrations
-- validation and filtering
+- per-user task scoping (`user_id` on Task)
+- validation and filtering (status, pagination)
 
 ## Frontend Shape
 
