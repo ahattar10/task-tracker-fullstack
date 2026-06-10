@@ -1,4 +1,4 @@
-# Documentation Index (Day 1 to Day 5)
+# Documentation Index (Day 1 to Day 6)
 
 Use this order for review and execution.
 
@@ -35,6 +35,15 @@ Use this order for review and execution.
 1. `day-5-checklist.md`
 2. `master-roadmap.md` (Day 5 section)
 3. `project-plan.md` (Day 5 section)
+4. `setup-run-guide.md`
+5. `testing-checklist.md`
+6. `troubleshooting-notes.md` (if blocked)
+
+## Day 6
+
+1. `day-6-checklist.md`
+2. `master-roadmap.md` (Day 6 section)
+3. `project-plan.md` (frontend section)
 4. `setup-run-guide.md`
 5. `testing-checklist.md`
 6. `troubleshooting-notes.md` (if blocked)

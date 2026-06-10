@@ -21,7 +21,8 @@ Build a full-stack task management app with:
 - Day 2: Complete
 - Day 3: Complete
 - Day 4: Complete
-- Day 5: Next
+- Day 5: Complete
+- Day 6: Next
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)
@@ -39,6 +40,7 @@ Build a full-stack task management app with:
 - [Day 3 checklist](docs/day-3-checklist.md)
 - [Day 4 checklist](docs/day-4-checklist.md)
 - [Day 5 checklist](docs/day-5-checklist.md)
+- [Day 6 checklist](docs/day-6-checklist.md)
 - [Day 4 evidence log](docs/day-4-evidence-log.md)
 
 ## Docs Source Of Truth
