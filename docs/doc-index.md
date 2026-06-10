@@ -41,3 +41,16 @@ Use this order for review and execution.
 ## Rule
 
 If a checklist changes in this docs folder, mirror the same process update in `binder for project` on the same day.
+
+## Operational Topics (Merged Into Main Docs)
+
+- Backend setup and run steps: `setup-run-guide.md`
+- Work-machine policy-safe venv workflow: `setup-run-guide.md` and `troubleshooting-notes.md`
+- Git and GitHub setup/sync commands: `setup-run-guide.md`
+
+## Review Later Note
+
+- Review whether to add "canonical source" notes at the top of binder-only guides in `binder for project`.
+- Keep binder files as backup/reference, with main source of truth in this repo's `docs/` folder.
+- Added on 2026-06-10 for follow-up.
+- Ask me later: re-sync binder copies of `doc-index.md`, `setup-run-guide.md`, and `troubleshooting-notes.md` to match latest main docs.

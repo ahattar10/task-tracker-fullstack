@@ -27,6 +27,7 @@ Build a full-stack task management app with:
 - [14-day project plan](docs/project-plan.md)
 
 ## Helpful Docs
+- [Documentation index](docs/doc-index.md)
 - [Day-to-day success kit](docs/day-to-day-success-kit.md)
 - [Project architecture](docs/project-architecture.md)
 - [API contract draft](docs/api-contract.md)
@@ -38,6 +39,12 @@ Build a full-stack task management app with:
 - [Day 3 checklist](docs/day-3-checklist.md)
 - [Day 4 checklist](docs/day-4-checklist.md)
 - [Day 4 evidence log](docs/day-4-evidence-log.md)
+
+## Docs Source Of Truth
+
+- Primary documentation source: `docs/` in this repository
+- Start from `docs/doc-index.md` for the current reading/execution order
+- If docs are updated here, mirror matching updates to `binder for project`
 
 ## Folder Structure
 - `frontend/` - React app

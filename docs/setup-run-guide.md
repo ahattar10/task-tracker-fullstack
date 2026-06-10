@@ -15,6 +15,26 @@ Use one of these interpreter approaches consistently for all backend commands:
 - Local backend venv: `backend/.venv` (normal setup)
 - Policy-safe venv: `C:\projects\.venvs\task-tracker` (use this if OneDrive policy blocks local `.venv`)
 
+## Work-Machine Policy-Safe Setup (Recommended)
+
+If your company policy blocks Python DLL files inside OneDrive paths, keep the repo in
+OneDrive and create the virtual environment outside OneDrive.
+
+One-time setup:
+
+```powershell
+python -m venv C:\projects\.venvs\task-tracker
+C:\projects\.venvs\task-tracker\Scripts\Activate.ps1
+pip install -r "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend\requirements.txt"
+```
+
+Daily start command:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
+C:\projects\.venvs\task-tracker\Scripts\python.exe -m app.dev_server
+```
+
 ## What You Need
 
 Install these first:
@@ -182,6 +202,40 @@ cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
 3. Add CRUD routes.                       ✅ done
 4. Add authentication.
 5. Start the frontend app.
+
+## Git And GitHub Quick Reference
+
+If this is a brand-new local folder that is not cloned from GitHub yet:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/ahattar10/task-tracker-fullstack.git
+git push -u origin main
+```
+
+Normal daily sync commands:
+
+```powershell
+git add .
+git commit -m "Describe your changes"
+git push
+```
+
+If you are on another machine:
+
+```powershell
+git clone https://github.com/ahattar10/task-tracker-fullstack.git
+```
+
+If already cloned, pull updates:
+
+```powershell
+git pull
+```
 
 ## Troubleshooting Notes
 

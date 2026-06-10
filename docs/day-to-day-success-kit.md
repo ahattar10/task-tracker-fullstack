@@ -75,6 +75,7 @@ Use this order every time you sit down to work:
 1. Update the README or docs if anything important changed.
 2. Write down the next step.
 3. Commit the work if Git is available.
+4. Mirror updated docs to `binder for project` when applicable.
 
 ## 4. What To Focus On Each Day
 

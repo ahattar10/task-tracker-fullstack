@@ -34,6 +34,29 @@ If PowerShell blocks `.venv` activation:
 - Allow script execution for the current session.
 - Or use Command Prompt instead.
 
+## Application Control Policy Blocks Python DLLs
+
+If you see an error similar to this:
+
+```text
+ImportError: DLL load failed while importing _pydantic_core:
+An Application Control policy has blocked this file.
+```
+
+This is usually caused by running `.venv` from a OneDrive-synced path.
+
+Use this fix:
+
+```powershell
+python -m venv C:\projects\.venvs\task-tracker
+C:\projects\.venvs\task-tracker\Scripts\Activate.ps1
+pip install -r "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend\requirements.txt"
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
+C:\projects\.venvs\task-tracker\Scripts\python.exe -m app.dev_server
+```
+
+Keep the project code in OneDrive, but keep the active Python environment outside OneDrive.
+
 ## Backend Will Not Start
 
 Check these first:
