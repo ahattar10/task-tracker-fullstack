@@ -40,6 +40,7 @@ Build a full-stack task management app with:
 - [Day 3 checklist](docs/day-3-checklist.md)
 - [Day 4 checklist](docs/day-4-checklist.md)
 - [Day 5 checklist](docs/day-5-checklist.md)
+- [Day 5 evidence log](docs/day-5-evidence-log.md)
 - [Day 6 checklist](docs/day-6-checklist.md)
 - [Day 4 evidence log](docs/day-4-evidence-log.md)
 

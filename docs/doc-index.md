@@ -36,8 +36,9 @@ Use this order for review and execution.
 2. `master-roadmap.md` (Day 5 section)
 3. `project-plan.md` (Day 5 section)
 4. `setup-run-guide.md`
-5. `testing-checklist.md`
-6. `troubleshooting-notes.md` (if blocked)
+5. `day-5-evidence-log.md`
+6. `testing-checklist.md`
+7. `troubleshooting-notes.md` (if blocked)
 
 ## Day 6
 

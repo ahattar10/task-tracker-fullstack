@@ -61,7 +61,7 @@ Makes the backend easier to use, easier to debug, and safer for frontend integra
 
 - [x] Verify combined pagination + filter behavior
 - [x] Verify auth still enforced for all task routes
-- [x] Capture request/response evidence for at least 5 checks
+- [x] Capture request/response evidence for at least 5 checks in `docs/day-5-evidence-log.md`
 
 ---
 
@@ -89,12 +89,4 @@ Use Swagger at `http://127.0.0.1:8000/docs` or `backend/requests.http` and valid
 
 ## Evidence Notes (Day 5)
 
-Validation run completed on 2026-06-10 with backend running locally.
-
-- Pagination check: `PAGINATION total=2 page=1 pages=2 items=1`
-- Status filter check: `FILTER status_done_total=1`
-- Priority filter check: `FILTER priority_high_total=1`
-- Search filter check: `FILTER search_alpha_total=1`
-- Validation format check: `VALIDATION status_code=422; detail_type=string_too_short`
-
-Result: Day 5 API quality behaviors verified (validation, pagination, filtering/search, and consistent error payload shape).
+Day 5 evidence details are maintained in `docs/day-5-evidence-log.md`.
