@@ -44,13 +44,13 @@ docker compose -f .\infra\docker-compose.yml up -d db
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
-C:\projects\.venvs\task-tracker\Scripts\uvicorn.exe app.main:app --reload --host 127.0.0.1 --port 8000
+C:\projects\.venvs\task-tracker\Scripts\python.exe -m app.dev_server
 ```
 
 Alternative command if local backend `.venv` is allowed:
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m app.dev_server
 ```
 
 - [ ] Apply latest migration

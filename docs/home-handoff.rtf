@@ -61,7 +61,7 @@ python -m venv .venv\par
 .\\.venv\\Scripts\\Activate.ps1\par
 pip install -r requirements.txt\par
 Copy-Item .env.example .env\par
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000\par
+python -m app.dev_server\par
 \par
 4) Verify API\par
 Open browser: http://127.0.0.1:8000/health\par

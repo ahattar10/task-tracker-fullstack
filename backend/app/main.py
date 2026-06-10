@@ -1,14 +1,7 @@
-import asyncio
-import sys
-
 from fastapi import FastAPI
 
 from app.api.tasks import router as tasks_router
 from app.core.config import settings
-
-# Psycopg async mode is incompatible with ProactorEventLoop on Windows.
-if sys.platform.startswith("win"):
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 app = FastAPI(title=settings.app_name)
 

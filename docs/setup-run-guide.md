@@ -74,13 +74,13 @@ alembic upgrade head
 Step 6: Start the API (recommended command).
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m app.dev_server
 ```
 
 Alternative (also valid):
 
 ```powershell
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+python -m app.dev_server
 ```
 
 Then open:

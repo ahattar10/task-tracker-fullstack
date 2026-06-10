@@ -63,10 +63,20 @@ async def run_migrations_online() -> None:
     await connectable.dispose()
 
 
+def run_migrations_entrypoint() -> None:
+    if sys.platform.startswith("win"):
+        import selectors
+
+        asyncio.run(
+            run_migrations_online(),
+            loop_factory=lambda: asyncio.SelectorEventLoop(selectors.SelectSelector()),
+        )
+        return
+
+    asyncio.run(run_migrations_online())
+
+
 if context.is_offline_mode():
     run_migrations_offline()
 else:
-    # Psycopg async mode is incompatible with ProactorEventLoop on Windows.
-    if sys.platform.startswith("win"):
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    asyncio.run(run_migrations_online())
+    run_migrations_entrypoint()

@@ -51,7 +51,7 @@ If you see `No module named uvicorn`:
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m app.dev_server
 ```
 
 ## Health Endpoint Does Not Load
