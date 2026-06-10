@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import sys
 from logging.config import fileConfig
 
 from alembic import context
@@ -65,4 +66,7 @@ async def run_migrations_online() -> None:
 if context.is_offline_mode():
     run_migrations_offline()
 else:
+    # Psycopg async mode is incompatible with ProactorEventLoop on Windows.
+    if sys.platform.startswith("win"):
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(run_migrations_online())

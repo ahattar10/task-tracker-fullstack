@@ -40,17 +40,17 @@ cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
 docker compose -f .\infra\docker-compose.yml up -d db
 ```
 
-- [ ] Start backend API
+- [ ] Start backend API (recommended for work machine)
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
-.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+C:\projects\.venvs\task-tracker\Scripts\uvicorn.exe app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Work-machine fallback command (App Control policy):
+Alternative command if local backend `.venv` is allowed:
 
 ```powershell
-C:\projects\.venvs\task-tracker\Scripts\uvicorn.exe app.main:app --reload --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 - [ ] Apply latest migration
