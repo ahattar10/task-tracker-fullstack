@@ -113,6 +113,7 @@ Response:
 - [ ] Delete returned 204
 - [ ] Post-delete GET returned 404
 - [ ] Evidence captured in this file
+- [ ] Optional smoke test output captured (`scripts/day3-smoke-test.ps1`)
 
 ## Notes
 

@@ -81,6 +81,13 @@ Use `http://127.0.0.1:8000/docs` or `backend/requests.http`.
 
 - [ ] Capture evidence in `docs/day-3-evidence-log.md`
 
+- [ ] Run automated smoke test (optional but recommended)
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+.\scripts\day3-smoke-test.ps1
+```
+
 ---
 
 ## Done Check
@@ -93,6 +100,7 @@ Suggested evidence to capture:
 - Successful update response (200)
 - Successful delete response (204)
 - Not found response after delete (404)
+- Smoke test output from `scripts/day3-smoke-test.ps1` (optional)
 
 ---
 

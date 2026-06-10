@@ -18,15 +18,17 @@ Use this order for review and execution.
 
 1. `day-3-checklist.md`
 2. `setup-run-guide.md` (Day 3 run block)
-3. `day-3-evidence-log.md`
-4. `troubleshooting-notes.md` (only if blocked)
+3. `scripts/day3-smoke-test.ps1` (optional)
+4. `day-3-evidence-log.md`
+5. `troubleshooting-notes.md` (only if blocked)
 
 ## Day 4
 
 1. `day-3-checklist.md` (read the Day 4 handoff section)
 2. `day-4-checklist.md`
-3. `day-4-evidence-log.md`
-4. `troubleshooting-notes.md` (if blocked)
+3. `scripts/day4-auth-smoke-test.ps1` (optional)
+4. `day-4-evidence-log.md`
+5. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 

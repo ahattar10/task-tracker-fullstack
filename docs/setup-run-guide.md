@@ -163,6 +163,18 @@ For Day 3 completion, continue by validating CRUD against Postgres and recording
 Open `backend/requests.http` in VS Code and click **Send Request** above each
 block (requires the REST Client extension). Or use Swagger at `/docs`.
 
+Optional automated smoke tests:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+.\scripts\day3-smoke-test.ps1
+```
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+.\scripts\day4-auth-smoke-test.ps1
+```
+
 ## What To Do Next After It Runs
 
 1. Add the Postgres database connection.  ✅ done

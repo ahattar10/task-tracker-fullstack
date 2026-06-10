@@ -55,6 +55,13 @@ Demonstrates secure API design, identity flow, and access control fundamentals.
 - [ ] Verify valid token allows access (`200`)
 - [ ] Capture evidence in `docs/day-4-evidence-log.md`
 
+- [ ] Run automated auth smoke test (optional but recommended)
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+.\scripts\day4-auth-smoke-test.ps1
+```
+
 ---
 
 ## Done Check
@@ -67,3 +74,4 @@ Suggested evidence to capture:
 - Successful login response with token payload
 - Unauthorized response without token
 - Successful response with valid token
+- Smoke test output from `scripts/day4-auth-smoke-test.ps1` (optional)

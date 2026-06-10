@@ -78,6 +78,7 @@ C:\projects\.venvs\task-tracker\Scripts\python.exe -m app.dev_server
 - [ ] Protected route rejects missing token
 - [ ] Protected route accepts valid token
 - [ ] Evidence captured in this file
+- [ ] Optional smoke test output captured (`scripts/day4-auth-smoke-test.ps1`)
 
 ## Notes
 
