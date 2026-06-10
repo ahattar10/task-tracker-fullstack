@@ -24,8 +24,9 @@ Use this order for review and execution.
 ## Day 4
 
 1. `day-3-checklist.md` (read the Day 4 handoff section)
-2. `day-4-evidence-log.md`
-3. `troubleshooting-notes.md` (if blocked)
+2. `day-4-checklist.md`
+3. `day-4-evidence-log.md`
+4. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 
