@@ -33,6 +33,29 @@ Use this checklist when you start adding tests to the project.
 4. Make sure the app still responds normally.
 5. Save only after the change is working.
 
+## Verification Evidence (API Examples)
+
+Capture at least one successful run with request and response snippets.
+
+Health check example:
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/health" | ConvertTo-Json -Compress
+```
+
+Expected response:
+
+```json
+{"status":"ok","environment":"development"}
+```
+
+CRUD evidence example sequence (via Swagger or `backend/requests.http`):
+
+1. `POST /tasks` -> `201 Created` with JSON containing `id`.
+2. `PUT /tasks/{id}` -> `200 OK` with updated field values.
+3. `DELETE /tasks/{id}` -> `204 No Content`.
+4. `GET /tasks/{id}` after delete -> `404 Not Found`.
+
 ## Later Test Automation Ideas
 
 - Add backend unit tests for routes and validation.
