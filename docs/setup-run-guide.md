@@ -30,6 +30,9 @@ The backend currently has:
 - a root route at `GET /`
 - a health route at `GET /health`
 - environment-based settings in `app/core/config.py`
+- async SQLAlchemy 2.0 + psycopg3 connection to Postgres
+- Alembic migrations under `backend/alembic/`
+- Task CRUD endpoints under `/tasks` (POST, GET list, GET one, PUT, DELETE)
 
 ## How To Run The Backend At Home
 
@@ -41,24 +44,68 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 Copy-Item .env.example .env
+```
+
+Start Postgres (Docker Desktop must be running):
+
+```powershell
+docker compose -f ..\infra\docker-compose.yml up -d db
+```
+
+Apply database migrations:
+
+```powershell
+alembic upgrade head
+```
+
+Start the API:
+
+```powershell
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Machine-verified command path (uses backend venv Python explicitly):
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
 Then open:
 
 - http://127.0.0.1:8000/
 - http://127.0.0.1:8000/health
+- http://127.0.0.1:8000/docs  (Swagger UI for the Task CRUD endpoints)
 
 ## Expected Result
 
 - `/` should return a small running message
 - `/health` should return `status: ok`
+- `/docs` should list the `/tasks` CRUD endpoints
+- `POST /tasks` with `{"title": "Hello"}` should return a task with an `id`
+
+Quick terminal verification:
+
+```powershell
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/health" | ConvertTo-Json -Compress
+```
+
+Expected response:
+
+```json
+{"status":"ok","environment":"development"}
+```
+
+## Testing The Task Endpoints
+
+Open `backend/requests.http` in VS Code and click **Send Request** above each
+block (requires the REST Client extension). Or use Swagger at `/docs`.
 
 ## What To Do Next After It Runs
 
-1. Add the Postgres database connection.
-2. Build task models.
-3. Add CRUD routes.
+1. Add the Postgres database connection.  ✅ done
+2. Build task models.                     ✅ done
+3. Add CRUD routes.                       ✅ done
 4. Add authentication.
 5. Start the frontend app.
 
@@ -67,3 +114,5 @@ Then open:
 - If `python` is missing, install Python and reopen the terminal.
 - If PowerShell blocks activation, allow script execution for the session or use a different shell.
 - If the port is busy, change the port in the uvicorn command.
+- If the API returns 500s on `/tasks` calls, check that `docker compose ... up -d db` is running and that `alembic upgrade head` ran without errors.
+- To reset the database: `docker compose -f infra\docker-compose.yml down -v` then `up -d db` and `alembic upgrade head` again.

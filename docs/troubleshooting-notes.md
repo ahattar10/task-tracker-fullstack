@@ -43,6 +43,17 @@ Check these first:
 - The `.env` file exists.
 - Nothing else is already using port `8000`.
 
+If you see `No module named uvicorn`:
+
+1. You are likely in the wrong folder or using the wrong Python environment.
+2. Change to `task-tracker-fullstack/backend`.
+3. Start with backend venv Python directly:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
 ## Health Endpoint Does Not Load
 
 If `http://127.0.0.1:8000/health` does not work:
