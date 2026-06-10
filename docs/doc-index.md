@@ -32,11 +32,12 @@ Use this order for review and execution.
 
 ## Day 5
 
-1. `master-roadmap.md` (Day 5 section)
-2. `project-plan.md` (Day 5 section)
-3. `setup-run-guide.md`
-4. `testing-checklist.md`
-5. `troubleshooting-notes.md` (if blocked)
+1. `day-5-checklist.md`
+2. `master-roadmap.md` (Day 5 section)
+3. `project-plan.md` (Day 5 section)
+4. `setup-run-guide.md`
+5. `testing-checklist.md`
+6. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 
