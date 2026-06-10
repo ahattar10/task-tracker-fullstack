@@ -71,6 +71,8 @@ Use `http://127.0.0.1:8000/docs` or `backend/requests.http`.
 5. Delete with `DELETE /tasks/{id}`
 6. Confirm deleted task returns 404 on `GET /tasks/{id}`
 
+- [ ] Capture evidence in `docs/day-3-evidence-log.md`
+
 ---
 
 ## Done Check
