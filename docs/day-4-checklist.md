@@ -43,19 +43,19 @@ Demonstrates secure API design, identity flow, and access control fundamentals.
 
 ## Execution Checklist
 
-- [ ] Add auth data model changes (if needed)
-- [ ] Add password hashing utility
-- [ ] Implement `POST /auth/register`
-- [ ] Implement `POST /auth/login`
-- [ ] Return JWT token on successful login
-- [ ] Add auth dependency to protected routes
-- [ ] Ensure `/tasks` endpoints require valid token
-- [ ] Verify missing token returns `401` or `403`
-- [ ] Verify invalid token returns `401` or `403`
-- [ ] Verify valid token allows access (`200`)
-- [ ] Capture evidence in `docs/day-4-evidence-log.md`
+- [x] Add auth data model changes (if needed)
+- [x] Add password hashing utility
+- [x] Implement `POST /auth/register`
+- [x] Implement `POST /auth/login`
+- [x] Return JWT token on successful login
+- [x] Add auth dependency to protected routes
+- [x] Ensure `/tasks` endpoints require valid token
+- [x] Verify missing token returns `401` or `403`
+- [x] Verify invalid token returns `401` or `403`
+- [x] Verify valid token allows access (`200`)
+- [x] Capture evidence in `docs/day-4-evidence-log.md`
 
-- [ ] Run automated auth smoke test (optional but recommended)
+- [x] Run automated auth smoke test (optional but recommended)
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"

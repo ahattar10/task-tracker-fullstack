@@ -31,7 +31,7 @@ $registerBody = @{
     password = $password
 } | ConvertTo-Json
 
-$register = Invoke-WebRequest -Method Post -Uri "$BaseUrl$RegisterPath" -ContentType "application/json" -Body $registerBody
+$register = Invoke-WebRequest -UseBasicParsing -Method Post -Uri "$BaseUrl$RegisterPath" -ContentType "application/json" -Body $registerBody
 Assert-OneOfStatusCodes -Label "REGISTER" -Expected @(200, 201) -Actual ([int]$register.StatusCode)
 
 $loginBody = @{
@@ -39,7 +39,7 @@ $loginBody = @{
     password = $password
 } | ConvertTo-Json
 
-$login = Invoke-WebRequest -Method Post -Uri "$BaseUrl$LoginPath" -ContentType "application/json" -Body $loginBody
+$login = Invoke-WebRequest -UseBasicParsing -Method Post -Uri "$BaseUrl$LoginPath" -ContentType "application/json" -Body $loginBody
 Assert-OneOfStatusCodes -Label "LOGIN" -Expected @(200) -Actual ([int]$login.StatusCode)
 $loginJson = $login.Content | ConvertFrom-Json
 $token = $null
@@ -57,7 +57,7 @@ if ([string]::IsNullOrWhiteSpace($token)) {
 Write-Host "TOKEN OK (found)"
 
 try {
-    Invoke-WebRequest -Method Get -Uri "$BaseUrl/tasks" | Out-Null
+    Invoke-WebRequest -UseBasicParsing -Method Get -Uri "$BaseUrl/tasks" | Out-Null
     throw "UNAUTH_TASKS expected 401 or 403 but request succeeded"
 } catch {
     $status = -1
@@ -73,7 +73,7 @@ try {
 }
 
 $authHeaders = @{ Authorization = "Bearer $token" }
-$authTasks = Invoke-WebRequest -Method Get -Uri "$BaseUrl/tasks" -Headers $authHeaders
+$authTasks = Invoke-WebRequest -UseBasicParsing -Method Get -Uri "$BaseUrl/tasks" -Headers $authHeaders
 Assert-OneOfStatusCodes -Label "AUTH_TASKS" -Expected @(200) -Actual ([int]$authTasks.StatusCode)
 
 Write-Host "Day 4 auth smoke test passed."

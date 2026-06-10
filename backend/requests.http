@@ -1,15 +1,38 @@
 ### Variables
 @host = http://127.0.0.1:8000
+@email = user@example.com
+@password = P@ssword123!
+@token = paste_jwt_here
 
 ### Health
 GET {{host}}/health
 
+### Register
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
 ### List tasks
 GET {{host}}/tasks
+Authorization: Bearer {{token}}
 
 ### Create a task
 POST {{host}}/tasks
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "title": "Write Day 2 summary",
@@ -19,10 +42,12 @@ Content-Type: application/json
 
 ### Get one task
 GET {{host}}/tasks/1
+Authorization: Bearer {{token}}
 
 ### Update a task
 PUT {{host}}/tasks/1
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "status": "in_progress"
@@ -30,3 +55,4 @@ Content-Type: application/json
 
 ### Delete a task
 DELETE {{host}}/tasks/1
+Authorization: Bearer {{token}}
