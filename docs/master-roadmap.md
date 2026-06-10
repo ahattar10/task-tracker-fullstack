@@ -5,7 +5,8 @@
 - ✅ Day 1: Plan + Setup
 - ✅ Day 2: Backend Scaffold (/health endpoint)
 - ✅ Day 3: Postgres + Task Model + CRUD
-- 🔜 Day 4: Authentication
+- ✅ Day 4: Authentication
+- 🔜 Day 5: API Quality
 
 ---
 
@@ -75,27 +76,27 @@ Done check:
 Time: 5-7 hrs | Difficulty: Medium-Hard
 
 Step 1: User Registration
-- [ ] User model (id, email, hashed_password, created_at)
-- [ ] Migration → users table
-- [ ] POST /auth/register
+- [x] User model (id, email, hashed_password, created_at)
+- [x] Migration → users table
+- [x] POST /auth/register
   - Hash password with passlib/bcrypt
   - Return user info
   - Handle duplicate email → 409
 
 Step 2: Login with JWT
-- [ ] POST /auth/login
+- [x] POST /auth/login
   - Verify password against hash
   - Generate JWT with user_id in payload
   - Return access_token + token_type: "bearer"
   - Wrong password → 401
 
 Step 3: Protect Task Routes
-- [ ] Auth dependency/middleware
+- [x] Auth dependency/middleware
   - Extract token from Authorization header
   - Decode → get user_id
   - Attach to request object
   - Missing/invalid → 401
-- [ ] Update all task endpoints:
+- [x] Update all task endpoints:
   - POST /tasks → task.user_id = current user
   - GET /tasks → filter by current user
   - GET /tasks/{id} → verify ownership

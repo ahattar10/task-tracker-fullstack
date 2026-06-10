@@ -1,4 +1,4 @@
-# Documentation Index (Day 1 to Day 4)
+# Documentation Index (Day 1 to Day 5)
 
 Use this order for review and execution.
 
@@ -28,6 +28,14 @@ Use this order for review and execution.
 2. `day-4-checklist.md`
 3. `scripts/day4-auth-smoke-test.ps1` (optional)
 4. `day-4-evidence-log.md`
+5. `troubleshooting-notes.md` (if blocked)
+
+## Day 5
+
+1. `master-roadmap.md` (Day 5 section)
+2. `project-plan.md` (Day 5 section)
+3. `setup-run-guide.md`
+4. `testing-checklist.md`
 5. `troubleshooting-notes.md` (if blocked)
 
 ## Rule

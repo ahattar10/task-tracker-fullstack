@@ -19,7 +19,9 @@ Build a full-stack task management app with:
 ## Progress Log
 - Day 1: Complete
 - Day 2: Complete
-- Day 3: In progress
+- Day 3: Complete
+- Day 4: Complete
+- Day 5: Next
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)
@@ -34,6 +36,8 @@ Build a full-stack task management app with:
 - [Day 1 checklist](docs/day-1-checklist.md)
 - [Day 2 checklist](docs/day-2-checklist.md)
 - [Day 3 checklist](docs/day-3-checklist.md)
+- [Day 4 checklist](docs/day-4-checklist.md)
+- [Day 4 evidence log](docs/day-4-evidence-log.md)
 
 ## Folder Structure
 - `frontend/` - React app
