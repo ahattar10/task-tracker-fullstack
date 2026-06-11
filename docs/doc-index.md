@@ -84,6 +84,12 @@ Preflight Rule: Before Step 1 coding on any day, run start-of-day preflight and 
 
 If a checklist changes in this docs folder, mirror the same process update in `binder for project` on the same day.
 
+Binder Sync Cadence:
+
+- Do binder sync once per day at closeout (not after every small edit).
+- Sequence: finish work -> commit/push in task-tracker -> sync `docs/` to binder `docs/` -> run parity check.
+- Keep task-tracker `docs/` as source of truth; binder is mirrored backup/reference.
+
 ## Operational Topics (Merged Into Main Docs)
 
 - Backend setup and run steps: `setup-run-guide.md`
