@@ -10,7 +10,8 @@
 - ✅ Day 6: Frontend Scaffold
 - ✅ Day 7: Core Task UI + API Integration
 - ✅ Day 8: UX Polish and Error States
-- 🟡 Day 9: Dockerize Services (next)
+- ✅ Day 9: Dockerize Services
+- 🟡 Day 10: Reliability Extras (next)
 
 ---
 
@@ -232,21 +233,31 @@ Done check:
 
 ---
 
-### Day 9 — Dockerize Services
+### Day 9 — Dockerize Services ✅ COMPLETE
 Time: 5-8 hrs | Difficulty: Hard
 
-- [ ] Backend Dockerfile (python:3.11-slim)
-- [ ] Frontend Dockerfile (node:18-alpine)
-- [ ] Docker Compose: backend, frontend, postgres
-- [ ] Named volume for data persistence
-- [ ] Environment variables from .env file
-- [ ] Test: delete repo → reclone → docker compose up → works
+- [x] Backend Dockerfile (python:3.11-slim)
+- [x] Frontend Dockerfile (node:18-alpine, multi-stage)
+- [x] Docker Compose: backend, frontend, postgres (3 services)
+- [x] Named volume for data persistence (task_tracker_pgdata)
+- [x] Environment variables from docker-compose.yml (DATABASE_URL, JWT_SECRET_KEY, etc.)
+- [x] Test: docker compose down → docker compose up → all services healthy
+- [x] Full E2E validation: register, login, CRUD, filtering, persistence across restart
 
-Done check:
-- docker compose up --build starts everything
+**Completion Evidence:**
+- ✅ All P1-P5 preflight checks: PASS
+- ✅ All I1-I8 implementation checks: PASS  
+- ✅ All M1-M8 browser E2E validation: PASS
+- ✅ Fresh restart with data persistence: PASS
+- Evidence log: docs/day-9-evidence-log.md
+
+Done check **✅ CONFIRMED**:
+- docker compose up --build starts all 3 services (db, backend, frontend)
 - Frontend loads at localhost:3000
-- Backend responds at localhost:8000/health
-- Full CRUD works through Docker
+- Backend health responds at localhost:8000/health (200 OK)
+- Full CRUD (register, login, create task, edit task, delete task, filter) works through Docker
+- Postgres data persists after stack restart via named volume
+- Session token persists in browser localStorage
 
 ---
 

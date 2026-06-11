@@ -233,6 +233,80 @@ API routing rule (important):
 - For local dev, leave `VITE_API_BASE_URL` **unset** in `frontend/.env`. The frontend then sends requests to `/api`, and Vite's proxy (see `frontend/vite.config.ts`) forwards them to `http://127.0.0.1:8000`.
 - Only set `VITE_API_BASE_URL` to an explicit URL (e.g. a VS Code dev tunnel) when you intentionally want to test against a remote backend. If a stale tunnel URL is left in `.env`, login and other API calls will hang silently because the frontend cannot reach the configured host. Comment out the override and restart Vite to recover.
 
+## Day 9+: Docker Compose Full Stack
+
+For a containerized dev environment that mimics cloud deployment, use Docker Compose to run all three services (database, backend, frontend) together.
+
+### Prerequisites
+
+- Docker Desktop installed and running
+- Git branch clean and synced
+- Day 8 gate confirmed PASS in docs/day-8-evidence-log.md
+
+### One-Copy Full-Stack Start (Recommended)
+
+From the repository root:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\infra"
+docker compose down --remove-orphans  # clean up any old containers
+docker compose up --build -d           # build and start all services
+```
+
+Wait 5-10 seconds for services to start, then run migrations:
+
+```powershell
+docker compose exec -T backend alembic upgrade head
+```
+
+Then verify:
+
+```powershell
+docker compose ps
+```
+
+All three containers (`db`, `backend`, `frontend`) should show `Up` or `Healthy` status.
+
+### Access Points
+
+- **Frontend**: http://127.0.0.1:3000 (full-stack SPA)
+- **Backend API**: http://127.0.0.1:8000 (OpenAPI docs at /docs)
+- **Backend Health**: http://127.0.0.1:8000/health
+- **Database**: localhost:5432 (PostgreSQL, credentials in docker-compose.yml)
+
+### Cleanup / Restart
+
+**Stop stack and preserve data:**
+
+```powershell
+docker compose down
+```
+
+**Stop stack and wipe database (fresh state):**
+
+```powershell
+docker compose down -v
+```
+
+**View logs:**
+
+```powershell
+docker compose logs backend --tail 50
+docker compose logs frontend --tail 50
+docker compose logs db --tail 50
+```
+
+### Data Persistence
+
+By default, database data persists in a named volume (`task_tracker_pgdata`) across container restarts. If you run `docker compose down` without `-v`, the volume survives and data reappears when you `docker compose up` again. Use `-v` to delete the volume and reset the database.
+
+### Common Issues
+
+- **Services won't start**: Check that Docker Desktop is running and port 3000 and 8000 are not already in use.
+- **Backend 500 errors**: Ensure migrations ran (`docker compose exec -T backend alembic upgrade head`) and check logs.
+- **Frontend shows "Connection refused"**: Verify backend service is healthy (`docker compose ps`); nginx proxy config requires the trailing slash in proxy_pass.
+- **Port 3000 already in use**: Either stop the conflicting service or map to a different host port by editing `docker-compose.yml` (change `3000:80` to `3001:80`, etc.).
+
 ## Git And GitHub Quick Reference
 
 This repository ships with an author-guard pre-commit hook under `.githooks/pre-commit`. It refuses any commit whose author identity is not `ahattar10 <88306485+ahattar10@users.noreply.github.com>`. Activate it once per clone:

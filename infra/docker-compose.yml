@@ -16,6 +16,57 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: task-tracker-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      DATABASE_URL: postgresql+psycopg://taskuser:taskpass@db:5432/tasktracker
+      JWT_SECRET_KEY: docker-dev-secret-key-change-in-production
+      APP_ENV: production
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: task-tracker-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
 volumes:
   task_tracker_pgdata:
+
+networks:
+  app-network:
+    driver: bridge
