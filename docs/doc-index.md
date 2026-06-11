@@ -1,4 +1,4 @@
-# Documentation Index (Day 1 to Day 6)
+# Documentation Index (Day 1 to Day 7)
 
 Use this order for review and execution.
 
@@ -49,6 +49,15 @@ Use this order for review and execution.
 5. `testing-checklist.md`
 6. `day-6-evidence-log.md`
 7. `troubleshooting-notes.md` (if blocked)
+
+## Day 7
+
+1. `day-7-checklist.md`
+2. `master-roadmap.md` (Day 7 section)
+3. `api-contract.md`
+4. `setup-run-guide.md`
+5. `day-7-evidence-log.md`
+6. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 
