@@ -1,12 +1,49 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from app.api.auth import router as auth_router
 from app.api.tasks import router as tasks_router
 from app.core.config import settings
 
 app = FastAPI(title=settings.app_name)
+
+
+class CORSMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        origin = request.headers.get("origin", "")
+
+        # Allow devtunnels, localhost, and 127.0.0.1
+        is_allowed = (
+            ".use.devtunnels.ms" in origin
+            or "localhost" in origin
+            or "127.0.0.1" in origin
+        )
+
+        if request.method == "OPTIONS":
+            if is_allowed:
+                return JSONResponse(
+                    status_code=200,
+                    headers={
+                        "Access-Control-Allow-Origin": origin,
+                        "Access-Control-Allow-Credentials": "true",
+                        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+                    },
+                )
+            return JSONResponse(status_code=200)
+
+        response = await call_next(request)
+
+        if is_allowed:
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+
+        return response
+
+
+app.add_middleware(CORSMiddleware)
 
 app.include_router(auth_router)
 app.include_router(tasks_router)

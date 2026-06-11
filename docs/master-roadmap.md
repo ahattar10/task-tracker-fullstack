@@ -8,7 +8,8 @@
 - ✅ Day 4: Authentication
 - ✅ Day 5: API Quality
 - ✅ Day 6: Frontend Scaffold
-- 🟡 Day 7: Core Task UI + API Integration (preflight complete, ready to execute)
+- ✅ Day 7: Core Task UI + API Integration
+- 🟡 Day 8: UX Polish and Error States (next)
 
 ---
 
@@ -173,42 +174,42 @@ Done check:
 
 ---
 
-### Day 7 — Core Task UI + API Integration
+### Day 7 — Core Task UI + API Integration ✅
 Time: 5-7 hrs | Difficulty: Medium-Hard
 
 Step 1: Task List Component
-- [ ] Fetch tasks from GET /tasks (with auth header)
-- [ ] Display tasks in list/card layout
-- [ ] Show: title, status, priority, due date
-- [ ] Filter bar: by status, priority, search
-- [ ] Pagination controls
+- [x] Fetch tasks from GET /tasks (with auth header)
+- [x] Display tasks in list/card layout
+- [x] Show: title, status, priority, due date
+- [x] Filter bar: by status, priority, search
+- [x] Pagination controls
 
 Step 2: Task Form Component
-- [ ] Create task form (title, description, due date, priority)
-- [ ] Edit task form (pre-filled, PUT request)
-- [ ] POST /tasks → add to list
-- [ ] PUT /tasks/{id} → update in list
-- [ ] Form validation
+- [x] Create task form (title, description, due date, priority)
+- [x] Edit task form (pre-filled, PUT request)
+- [x] POST /tasks → add to list
+- [x] PUT /tasks/{id} → update in list
+- [x] Form validation
 
 Step 3: Delete Task
-- [ ] Delete button on each task
-- [ ] Confirmation dialog
-- [ ] DELETE /tasks/{id} → remove from list
+- [x] Delete button on each task
+- [x] Confirmation dialog
+- [x] DELETE /tasks/{id} → remove from list
 
 Step 4: States
-- [ ] Loading state: spinner/skeleton during API calls
-- [ ] Empty state: "No tasks yet — create your first one"
-- [ ] Error state: "Couldn't load tasks. Try again."
+- [x] Loading state: spinner/skeleton during API calls
+- [x] Empty state: "No tasks yet — create your first one"
+- [x] Error state: "Couldn't load tasks. Try again."
 
 ADD: GA4 Events
-- [ ] task_created
-- [ ] task_updated
-- [ ] task_deleted
-- [ ] task_completed (when status changes to done)
+- [x] task_created
+- [x] task_updated
+- [x] task_deleted
+- [x] task_completed (when status changes to done)
 
 Done check:
-- Full CRUD works end-to-end in browser
-- All states tested: loading, empty, error, success
+- Full CRUD works end-to-end in browser ✓ (validated 2026-06-11, see docs/day-7-evidence-log.md M1-M5)
+- All states tested: loading, empty, error, success ✓ (M11, M13, M14, M15)
 
 ---
 

@@ -110,9 +110,9 @@ Day 7 connects frontend to real task operations and creates the first end-to-end
 
 ### Step 7: Validation + Evidence
 
-- [ ] Validate full CRUD flow in browser
-- [ ] Validate filters and pagination behavior
-- [ ] Validate loading/empty/error/success states
+- [x] Validate full CRUD flow in browser
+- [x] Validate filters and pagination behavior
+- [x] Validate loading/empty/error/success states
 - [x] Capture proof in docs/day-7-evidence-log.md
 
 ---

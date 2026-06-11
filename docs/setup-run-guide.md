@@ -214,6 +214,25 @@ cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
 4. Add authentication.
 5. Start the frontend app.
 
+## Frontend Local Dev (Vite)
+
+Run the frontend from the repo's portable Node toolchain so versions stay consistent across machines:
+
+```powershell
+cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack"
+.\scripts\enable-portable-node.ps1
+cd frontend
+npm install   # only on first run / after dependency changes
+npm run dev
+```
+
+Then open http://127.0.0.1:5173.
+
+API routing rule (important):
+
+- For local dev, leave `VITE_API_BASE_URL` **unset** in `frontend/.env`. The frontend then sends requests to `/api`, and Vite's proxy (see `frontend/vite.config.ts`) forwards them to `http://127.0.0.1:8000`.
+- Only set `VITE_API_BASE_URL` to an explicit URL (e.g. a VS Code dev tunnel) when you intentionally want to test against a remote backend. If a stale tunnel URL is left in `.env`, login and other API calls will hang silently because the frontend cannot reach the configured host. Comment out the override and restart Vite to recover.
+
 ## Git And GitHub Quick Reference
 
 If this is a brand-new local folder that is not cloned from GitHub yet:
