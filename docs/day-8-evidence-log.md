@@ -127,4 +127,4 @@ Gate Result: PASS
 
 - What is done: Skeleton loaders, inline submit spinners, distinct empty states, protected route enforcement, 401 session-expiry redirect + notice, logout telemetry/flow, and full Day 8 manual validation suite (M1-M14) completed.
 - What remains: Optional cosmetic polish for occasional micro-flicker on fast refetch transitions; no functional blockers.
-- First step for Day 9: open docs/day-9-checklist.md (to be authored) and confirm Day 8 gate read PASS.
+- First step for Day 9: open docs/day-9-checklist.md and confirm Day 8 gate reads PASS.
