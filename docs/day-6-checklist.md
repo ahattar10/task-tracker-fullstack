@@ -48,32 +48,32 @@ Time: 3-5 hrs | Difficulty: Medium
 
 ### Step 1: React + TypeScript Setup
 
-- [ ] Create React app with TypeScript (Vite or CRA)
-- [ ] Install: react-router-dom, axios
-- [ ] Folder structure: components/, pages/, services/, hooks/
+- [x] Create React app with TypeScript (Vite or CRA)
+- [x] Install: react-router-dom, axios
+- [x] Folder structure: components/, pages/, services/, hooks/
 
 ### Step 2: Routing + Layout
 
-- [ ] Routes: /login, /register, /tasks, /tasks/:id
-- [ ] Layout component (header, sidebar placeholder, main area)
-- [ ] Basic styling (Tailwind or CSS modules)
+- [x] Routes: /login, /register, /tasks, /tasks/:id
+- [x] Layout component (header, sidebar placeholder, main area)
+- [x] Basic styling (Tailwind or CSS modules)
 
 ### Step 3: Login + Register Pages
 
-- [ ] Login form (email, password, submit button)
-- [ ] Register form (email, password, confirm password)
-- [ ] Form validation
-- [ ] Call backend auth endpoints
-- [ ] Store JWT token (localStorage)
-- [ ] Redirect to /tasks on success
-- [ ] Show error messages on failure
+- [x] Login form (email, password, submit button)
+- [x] Register form (email, password, confirm password)
+- [x] Form validation
+- [x] Call backend auth endpoints
+- [x] Store JWT token (localStorage)
+- [x] Redirect to /tasks on success
+- [x] Show error messages on failure
 
 ### ADD: GA4 Integration
 
-- [ ] Add GA4 snippet to index.html or main.tsx
-- [ ] Track: page_view (automatic)
-- [ ] Track: user_registered event
-- [ ] Track: user_login event
+- [x] Add GA4 snippet to index.html or main.tsx
+- [x] Track: page_view (automatic)
+- [x] Track: user_registered event
+- [x] Track: user_login event
 
 ---
 
@@ -106,3 +106,10 @@ With backend running, verify:
 - Frontend compiles and runs
 - Auth pages render
 - Login/Register calls backend successfully
+
+## Current Status Note (2026-06-11)
+
+- Frontend scaffold and Day 6 code implementation are complete in source files.
+- Node.js/npm execution is now available using portable Node in `.tools/node` (no admin install required).
+- `npm install` and `npm run build` completed successfully in `frontend`.
+- Remaining validation: run `npm run dev` and verify login/register behavior against a running backend instance.

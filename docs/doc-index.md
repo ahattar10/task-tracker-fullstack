@@ -47,7 +47,8 @@ Use this order for review and execution.
 3. `project-plan.md` (frontend section)
 4. `setup-run-guide.md`
 5. `testing-checklist.md`
-6. `troubleshooting-notes.md` (if blocked)
+6. `day-6-evidence-log.md`
+7. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 
