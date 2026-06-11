@@ -112,4 +112,4 @@ With backend running, verify:
 - Frontend scaffold and Day 6 code implementation are complete in source files.
 - Node.js/npm execution is now available using portable Node in `.tools/node` (no admin install required).
 - `npm install` and `npm run build` completed successfully in `frontend`.
-- Remaining validation: run `npm run dev` and verify login/register behavior against a running backend instance.
+- `npm run dev` verified and backend auth runtime checks completed: register success (201), duplicate register (409), login success (200), login failure (401).

@@ -7,7 +7,7 @@
 - ✅ Day 3: Postgres + Task Model + CRUD
 - ✅ Day 4: Authentication
 - ✅ Day 5: API Quality
-- 🚧 Day 6: Frontend Scaffold (in progress)
+- ✅ Day 6: Frontend Scaffold
 
 ---
 
