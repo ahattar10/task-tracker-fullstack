@@ -1,13 +1,26 @@
 import { FormEvent, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/auth";
 
 export function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const sessionNotice = useMemo(() => {
+    const reason = new URLSearchParams(location.search).get("reason");
+    if (reason === "session_expired") {
+      return "Your session expired. Please sign in again.";
+    }
+    if (sessionStorage.getItem("task_tracker_session_expired") === "1") {
+      sessionStorage.removeItem("task_tracker_session_expired");
+      return "Your session expired. Please sign in again.";
+    }
+    return null;
+  }, [location.search]);
 
   const isValid = useMemo(() => {
     return email.trim().length >= 3 && password.length >= 8;
@@ -47,6 +60,8 @@ export function LoginPage() {
 
       <form className="auth-card" onSubmit={onSubmit}>
         <h2>Welcome Back</h2>
+
+        {sessionNotice ? <p className="form-notice">{sessionNotice}</p> : null}
 
         <label htmlFor="login-email">Email</label>
         <input

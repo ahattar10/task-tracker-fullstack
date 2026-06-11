@@ -88,6 +88,15 @@ a {
   margin: 0.2rem 0 0;
 }
 
+.form-notice {
+  margin: 0.2rem 0 0;
+  color: #0b4f7d;
+  background: rgba(24, 147, 218, 0.12);
+  border: 1px solid rgba(24, 147, 218, 0.35);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+}
+
 .solid-btn,
 .ghost-btn {
   border: 0;
@@ -234,6 +243,12 @@ a {
   font-weight: 600;
 }
 
+.tasks-refreshing {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 .tasks-state {
   background: var(--surface-strong);
   border: 1px dashed #b5c3dd;
@@ -332,6 +347,91 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
+}
+
+.task-card .task-actions > button {
+  min-width: 4.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Skeleton loader (Day 8 preview) */
+@keyframes skeleton-pulse {
+  0% { opacity: 0.55; }
+  50% { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e6ebf3 0%, #eef2f8 50%, #e6ebf3 100%);
+  border-radius: 6px;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 0.85rem;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 1rem;
+}
+
+.skeleton-badge {
+  width: 3.2rem;
+  height: 1.05rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.skeleton-badges {
+  display: inline-flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.skeleton-desc-1 {
+  width: 95%;
+}
+
+.skeleton-desc-2 {
+  width: 70%;
+}
+
+.skeleton-meta {
+  width: 45%;
+  height: 0.7rem;
+}
+
+.skeleton-action {
+  width: 4.2rem;
+  height: 1.8rem;
+  border-radius: 8px;
+}
+
+/* Submit-button spinner (Day 8 Decision 2) */
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-spinner {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-left: 0.35em;
+  opacity: 0.8;
+}
+
+.task-card-skeleton {
+  pointer-events: none;
 }
 
 .pager-row {

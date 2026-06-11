@@ -59,13 +59,13 @@ Day 8 turns a working Day 7 product into one that feels polished and trustworthy
 
 ## Pre-Execution Prep Gate
 
-- [ ] Git branch clean and synced with remote
-- [ ] Portable Node enabled and versions verified
-- [ ] Frontend build succeeds (npm run build)
-- [ ] Backend health endpoint verified
-- [ ] Auth register/login smoke checks verified
-- [ ] Day 8 UX decisions finalized
-- [ ] Day 8 docs created and indexed
+- [x] Git branch clean and synced with remote
+- [x] Portable Node enabled and versions verified
+- [x] Frontend build succeeds (npm run build)
+- [x] Backend health endpoint verified
+- [x] Auth register/login smoke checks verified
+- [x] Day 8 UX decisions finalized
+- [x] Day 8 docs created and indexed
 
 Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
@@ -75,64 +75,64 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 1: Skeleton Loaders for Task List
 
-- [ ] Add a `TaskCardSkeleton` (or equivalent) component matching real card dimensions
-- [ ] Render N skeleton cards on initial fetch when no data is yet cached
-- [ ] Render skeletons (or a subtle inline indicator) on filter/pagination refetches without flashing the empty state
-- [ ] Verify skeleton does not appear during silent background mutations
+- [x] Add a `TaskCardSkeleton` (or equivalent) component matching real card dimensions
+- [x] Render N skeleton cards on initial fetch when no data is yet cached
+- [x] Render skeletons (or a subtle inline indicator) on filter/pagination refetches without flashing the empty state
+- [x] Verify skeleton does not appear during silent background mutations
 
 ### Step 2: Submit-Button Spinners
 
-- [ ] Inline spinner on Create Task submit while POST is in flight
-- [ ] Inline spinner on Edit Task submit while PUT is in flight
-- [ ] Inline spinner on Delete confirm while DELETE is in flight
-- [ ] Disable the submit button while in-flight to prevent double-submit
-- [ ] Restore button label promptly on success or error
+- [x] Inline spinner on Create Task submit while POST is in flight
+- [x] Inline spinner on Edit Task submit while PUT is in flight
+- [x] Inline spinner on Delete confirm while DELETE is in flight
+- [x] Disable the submit button while in-flight to prevent double-submit
+- [x] Restore button label promptly on success or error
 
 ### Step 3: Distinct Empty States
 
-- [ ] "No tasks yet - create your first one." when the user has zero tasks total
-- [ ] "No tasks match your filters." when filters/search produced an empty page
-- [ ] Each empty state offers an obvious next action (Create / Reset filters)
-- [ ] Empty state never appears during loading
+- [x] "No tasks yet - create your first one." when the user has zero tasks total
+- [x] "No tasks match your filters." when filters/search produced an empty page
+- [x] Each empty state offers an obvious next action (Create / Reset filters)
+- [x] Empty state never appears during loading
 
 ### Step 4: Protected Routes
 
-- [ ] /tasks (and any other authenticated route) redirects to /login when no token is present
-- [ ] Direct URL entry to a protected route while logged out lands on /login
-- [ ] After successful login, the user lands on the originally requested route when applicable
-- [ ] Navigating back after logout does not reveal protected pages
+- [x] /tasks (and any other authenticated route) redirects to /login when no token is present
+- [x] Direct URL entry to a protected route while logged out lands on /login
+- [x] After successful login, the user lands on the originally requested route when applicable
+- [x] Navigating back after logout does not reveal protected pages
 
 ### Step 5: Session Expiry Handling
 
-- [ ] axios response interceptor detects 401 on authenticated requests
-- [ ] On 401, the stored token is cleared and the user is redirected to /login
-- [ ] A one-line, user-facing notice ("Your session expired. Please sign in again.") is shown on the login page in this flow
-- [ ] No raw `AxiosError` or stack content appears in the UI
+- [x] axios response interceptor detects 401 on authenticated requests
+- [x] On 401, the stored token is cleared and the user is redirected to /login
+- [x] A one-line, user-facing notice ("Your session expired. Please sign in again.") is shown on the login page in this flow
+- [x] No raw `AxiosError` or stack content appears in the UI
 
 ### Step 6: Logout Flow
 
-- [ ] Logout button is visible in the authenticated layout
-- [ ] Click clears the token from storage and any in-memory user state
-- [ ] Click redirects to /login
-- [ ] Subsequent attempts to access protected routes redirect to /login
-- [ ] GA4 `user_logout` event emitted on successful logout
+- [x] Logout button is visible in the authenticated layout
+- [x] Click clears the token from storage and any in-memory user state
+- [x] Click redirects to /login
+- [x] Subsequent attempts to access protected routes redirect to /login
+- [x] GA4 `user_logout` event emitted on successful logout
 
 ### Step 7: Error Copy Audit
 
-- [ ] List/CRUD error messages are user-facing strings, not raw error objects
-- [ ] Network failure (backend down) renders a clear message + retry affordance (regression check from Day 7 M14)
-- [ ] Validation errors map to inline field messages, not banner-only output
-- [ ] No `console.error` is the only signal of a user-visible failure
+- [x] List/CRUD error messages are user-facing strings, not raw error objects
+- [x] Network failure (backend down) renders a clear message + retry affordance (regression check from Day 7 M14)
+- [x] Validation errors map to inline field messages, not banner-only output
+- [x] No `console.error` is the only signal of a user-visible failure
 
 ### Step 8: Validation + Evidence
 
-- [ ] Validate skeleton loader behavior in browser (initial load + filter refetch)
-- [ ] Validate button spinners on create / edit / delete
-- [ ] Validate both empty-state copies (zero tasks vs. zero matches)
-- [ ] Validate protected-route redirect (logged-out direct URL)
-- [ ] Validate 401 session-expired flow (manually delete token in storage and trigger a request)
-- [ ] Validate Logout clears token and redirects
-- [ ] Capture proof in docs/day-8-evidence-log.md
+- [x] Validate skeleton loader behavior in browser (initial load + filter refetch)
+- [x] Validate button spinners on create / edit / delete
+- [x] Validate both empty-state copies (zero tasks vs. zero matches)
+- [x] Validate protected-route redirect (logged-out direct URL)
+- [x] Validate 401 session-expired flow (manually delete token in storage and trigger a request)
+- [x] Validate Logout clears token and redirects
+- [x] Capture proof in docs/day-8-evidence-log.md
 
 ---
 

@@ -1,5 +1,6 @@
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { trackEvent } from "../analytics/ga4";
+import { TaskCardSkeleton } from "../components/TaskCardSkeleton";
 import {
   createTask,
   deleteTask,
@@ -43,6 +44,8 @@ export function TasksPage() {
 
   const [statusFilter, setStatusFilter] = useState<"all" | TaskStatus>("all");
   const [priorityFilter, setPriorityFilter] = useState<"all" | TaskPriority>("all");
+  const [statusFilterInput, setStatusFilterInput] = useState<"all" | TaskStatus>("all");
+  const [priorityFilterInput, setPriorityFilterInput] = useState<"all" | TaskPriority>("all");
   const [searchInput, setSearchInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -50,6 +53,7 @@ export function TasksPage() {
   const [modalMode, setModalMode] = useState<ModalMode>("create");
   const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [formValues, setFormValues] = useState<TaskFormValues>(DEFAULT_FORM);
 
@@ -83,6 +87,22 @@ export function TasksPage() {
     void loadTasks();
   }, [loadTasks]);
 
+  const [showRefreshingHint, setShowRefreshingHint] = useState(false);
+  useEffect(() => {
+    if (!(loading && tasks.length > 0 && !error)) {
+      setShowRefreshingHint(false);
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setShowRefreshingHint(true);
+    }, 180);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [error, loading, tasks.length]);
+
   const openCreateModal = () => {
     setModalMode("create");
     setActiveTask(null);
@@ -111,11 +131,15 @@ export function TasksPage() {
 
   const submitFilters = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatusFilter(statusFilterInput);
+    setPriorityFilter(priorityFilterInput);
     setPage(1);
     setSearchQuery(searchInput);
   };
 
   const resetFilters = () => {
+    setStatusFilterInput("all");
+    setPriorityFilterInput("all");
     setStatusFilter("all");
     setPriorityFilter("all");
     setSearchInput("");
@@ -188,6 +212,7 @@ export function TasksPage() {
       return;
     }
 
+    setDeletingId(task.id);
     try {
       await deleteTask(task.id);
       trackEvent("task_deleted", {
@@ -202,6 +227,8 @@ export function TasksPage() {
       }
     } catch {
       setError("Couldn't delete task. Try again.");
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -223,7 +250,18 @@ export function TasksPage() {
     }
   };
 
+  const hasActiveFilters =
+    statusFilter !== "all" ||
+    priorityFilter !== "all" ||
+    searchQuery.trim().length > 0;
+
   const showingEmptyState = !loading && !error && tasks.length === 0;
+  const showingNoTasksYet =
+    showingEmptyState && !hasActiveFilters;
+  const showingNoMatches =
+    showingEmptyState && hasActiveFilters;
+  const showingInitialSkeleton = loading && tasks.length === 0 && !error;
+  const showingRefetchIndicator = showRefreshingHint;
 
   const pagerLabel = useMemo(() => {
     if (total === 0) {
@@ -239,10 +277,9 @@ export function TasksPage() {
           <label>
             Status
             <select
-              value={statusFilter}
+              value={statusFilterInput}
               onChange={(event) => {
-                setStatusFilter(event.target.value as "all" | TaskStatus);
-                setPage(1);
+                setStatusFilterInput(event.target.value as "all" | TaskStatus);
               }}
             >
               <option value="all">All</option>
@@ -255,10 +292,9 @@ export function TasksPage() {
           <label>
             Priority
             <select
-              value={priorityFilter}
+              value={priorityFilterInput}
               onChange={(event) => {
-                setPriorityFilter(event.target.value as "all" | TaskPriority);
-                setPage(1);
+                setPriorityFilterInput(event.target.value as "all" | TaskPriority);
               }}
             >
               <option value="all">All</option>
@@ -298,13 +334,21 @@ export function TasksPage() {
       {success ? <p className="success-copy">{success}</p> : null}
       {error ? <p className="form-error">{error}</p> : null}
 
-      {loading ? (
-        <div className="tasks-state">Loading tasks...</div>
+      {showingRefetchIndicator ? (
+        <p className="tasks-refreshing" aria-live="polite">Refreshing tasks...</p>
       ) : null}
 
-      {showingEmptyState ? (
+      {showingInitialSkeleton ? (
+        <div className="task-card-grid" data-testid="task-skeletons">
+          {Array.from({ length: DEFAULT_LIMIT }).map((_, i) => (
+            <TaskCardSkeleton key={`skeleton-${i}`} />
+          ))}
+        </div>
+      ) : null}
+
+      {showingNoTasksYet ? (
         <div className="tasks-state">
-          No tasks yet - create your first one.
+          No tasks yet. Create your first task to get started.
           <div>
             <button type="button" className="solid-btn" onClick={openCreateModal}>
               Create Task
@@ -313,7 +357,18 @@ export function TasksPage() {
         </div>
       ) : null}
 
-      {!loading && !showingEmptyState && !error ? (
+      {showingNoMatches ? (
+        <div className="tasks-state">
+          No tasks match your filters.
+          <div>
+            <button type="button" className="ghost-btn dark-ghost-btn" onClick={resetFilters}>
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {tasks.length > 0 && !error ? (
         <>
           <div className="task-card-grid">
             {tasks.map((task) => (
@@ -349,8 +404,11 @@ export function TasksPage() {
                     type="button"
                     className="ghost-btn danger-btn"
                     onClick={() => handleDelete(task)}
+                    disabled={deletingId === task.id}
                   >
-                    Delete
+                    {deletingId === task.id ? (
+                      <>Deleting&hellip; <span className="btn-spinner" aria-hidden="true" /></>
+                    ) : "Delete"}
                   </button>
                 </div>
               </article>
@@ -453,11 +511,11 @@ export function TasksPage() {
 
               <div className="task-actions">
                 <button type="submit" className="solid-btn" disabled={saving}>
-                  {saving
-                    ? "Saving..."
-                    : modalMode === "create"
-                      ? "Create"
-                      : "Save"}
+                  {saving ? (
+                    <>{modalMode === "create" ? "Creating" : "Saving"}&hellip; <span className="btn-spinner" aria-hidden="true" /></>
+                  ) : (
+                    modalMode === "create" ? "Create" : "Save"
+                  )}
                 </button>
                 <button
                   type="button"

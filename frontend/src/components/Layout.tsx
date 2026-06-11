@@ -1,12 +1,16 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { trackEvent } from "../analytics/ga4";
 import { clearAccessToken } from "../services/http";
 
 export function Layout() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    trackEvent("user_logout", {
+      source: "sidebar_button",
+    });
     clearAccessToken();
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
 
   return (
