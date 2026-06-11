@@ -15,6 +15,12 @@ Use one of these interpreter approaches consistently for all backend commands:
 - Local backend venv: `backend/.venv` (normal setup)
 - Policy-safe venv: `C:\projects\.venvs\task-tracker` (use this if OneDrive policy blocks local `.venv`)
 
+Operational rule:
+
+- Backend commands must use a backend venv interpreter.
+- Activation is optional if you run the interpreter path directly.
+- Frontend, docs, and git commands do not require Python venv activation.
+
 ## Work-Machine Policy-Safe Setup (Recommended)
 
 If your company policy blocks Python DLL files inside OneDrive paths, keep the repo in
@@ -109,6 +115,11 @@ Step 6: Start the API (recommended command).
 ```powershell
 .\.venv\Scripts\python.exe -m app.dev_server
 ```
+
+Why this is recommended:
+
+- It avoids shell confusion about whether a venv is active.
+- It guarantees backend dependencies are used from the correct environment.
 
 Alternative (also valid):
 

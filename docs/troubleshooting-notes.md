@@ -34,6 +34,11 @@ If PowerShell blocks `.venv` activation:
 - Allow script execution for the current session.
 - Or use Command Prompt instead.
 
+Note:
+
+- Backend work still requires backend venv dependencies.
+- If activation is flaky, run backend commands with the interpreter path directly instead of activating first.
+
 ## Application Control Policy Blocks Python DLLs
 
 If you see an error similar to this:
@@ -70,12 +75,17 @@ If you see `No module named uvicorn`:
 
 1. You are likely in the wrong folder or using the wrong Python environment.
 2. Change to `task-tracker-fullstack/backend`.
-3. Start with backend venv Python directly:
+3. Start with backend venv Python directly (preferred):
 
 ```powershell
 cd "C:\Users\a_hat\OneDrive\Desktop\task-tracker-fullstack\backend"
 .\.venv\Scripts\python.exe -m app.dev_server
 ```
+
+Scope reminder:
+
+- This venv requirement applies to backend Python commands only.
+- Frontend (`npm`), docs, and git commands do not depend on Python venv activation.
 
 ## Health Endpoint Does Not Load
 

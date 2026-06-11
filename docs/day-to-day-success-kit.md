@@ -87,6 +87,12 @@ Set-Location ..
 
 Record PASS/FAIL in the day's evidence log before implementation.
 
+Interpreter rule:
+
+- Backend Python commands: use backend venv interpreter path (`backend/.venv/Scripts/python.exe`) or equivalent policy-safe interpreter.
+- Frontend commands: no Python venv required.
+- Git/docs commands: no Python venv required.
+
 ### Build Session
 
 1. Make the smallest change possible.
