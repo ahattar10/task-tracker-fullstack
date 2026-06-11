@@ -1,5 +1,7 @@
 # Task Tracker Full Stack
 
+[![CI](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml/badge.svg)](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml)
+
 Day 1 setup for a portfolio project.
 
 ## Goal
