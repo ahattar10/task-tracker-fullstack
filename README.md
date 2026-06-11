@@ -22,7 +22,11 @@ Build a full-stack task management app with:
 - Day 3: Complete
 - Day 4: Complete
 - Day 5: Complete
-- Day 6: Next
+- Day 6: Complete
+- Day 7: Complete
+- Day 8: Complete
+- Day 9: Complete
+- Day 10: In progress
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)
@@ -45,6 +49,19 @@ Build a full-stack task management app with:
 - [Day 5 evidence log](docs/day-5-evidence-log.md)
 - [Day 6 checklist](docs/day-6-checklist.md)
 - [Day 4 evidence log](docs/day-4-evidence-log.md)
+- [Day 7 checklist](docs/day-7-checklist.md)
+- [Day 7 evidence log](docs/day-7-evidence-log.md)
+- [Day 8 checklist](docs/day-8-checklist.md)
+- [Day 8 evidence log](docs/day-8-evidence-log.md)
+- [Day 9 checklist](docs/day-9-checklist.md)
+- [Day 9 evidence log](docs/day-9-evidence-log.md)
+- [Day 10 checklist](docs/day-10-checklist.md)
+- [Day 10 evidence log](docs/day-10-evidence-log.md)
+
+## Automation
+- CI workflow: `.github/workflows/ci.yml`
+- Day 9 compose verification: `scripts/day9-compose-verify.ps1`
+- Day 10 reliability verification: `scripts/day10-reliability-verify.ps1`
 
 ## Docs Source Of Truth
 
