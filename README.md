@@ -28,7 +28,7 @@ Build a full-stack task management app with:
 - Day 7: Complete
 - Day 8: Complete
 - Day 9: Complete
-- Day 10: In progress
+- Day 10: Complete
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)

@@ -95,6 +95,29 @@ If `http://127.0.0.1:8000/health` does not work:
 2. Confirm the backend started without errors.
 3. Check the terminal for the exact error message.
 
+## Frontend Container Shows Unhealthy In Docker Compose
+
+If `docker compose ps` shows frontend `unhealthy` but the UI still loads:
+
+1. Check the container health output:
+
+```powershell
+docker inspect --format "{{json .State.Health}}" task-tracker-frontend
+```
+
+2. If you see `wget: can't connect to remote host: Connection refused`, update health checks to target IPv4 loopback:
+
+- Use `http://127.0.0.1/health` (not `http://localhost/health`) in:
+	- `frontend/Dockerfile` HEALTHCHECK
+	- `infra/docker-compose.yml` frontend healthcheck
+
+3. Rebuild and restart frontend:
+
+```powershell
+docker compose -f infra/docker-compose.yml up --build -d frontend
+docker compose -f infra/docker-compose.yml ps
+```
+
 ## File Path Or Folder Not Found
 
 If a folder or file seems missing:

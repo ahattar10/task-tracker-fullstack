@@ -305,6 +305,7 @@ By default, database data persists in a named volume (`task_tracker_pgdata`) acr
 - **Services won't start**: Check that Docker Desktop is running and port 3000 and 8000 are not already in use.
 - **Backend 500 errors**: Ensure migrations ran (`docker compose exec -T backend alembic upgrade head`) and check logs.
 - **Frontend shows "Connection refused"**: Verify backend service is healthy (`docker compose ps`); nginx proxy config requires the trailing slash in proxy_pass.
+- **Frontend container marked unhealthy**: Use IPv4 loopback for health probes (`http://127.0.0.1/health`) instead of `localhost` to avoid container IPv6 localhost resolution failures.
 - **Port 3000 already in use**: Either stop the conflicting service or map to a different host port by editing `docker-compose.yml` (change `3000:80` to `3001:80`, etc.).
 
 ## Git And GitHub Quick Reference

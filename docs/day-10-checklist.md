@@ -74,11 +74,11 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 1: Environment Variables (.env.example)
 
-- [ ] Create backend/.env.example with all required variables (DATABASE_URL, JWT_SECRET_KEY, etc.)
-- [ ] Create frontend/.env.example with VITE_API_BASE_URL and other config
-- [ ] Add comments explaining each variable
-- [ ] Verify no actual secrets are in .example files
-- [ ] Document which variables are required vs. optional
+- [x] Create backend/.env.example with all required variables (DATABASE_URL, JWT_SECRET_KEY, etc.)
+- [x] Create frontend/.env.example with VITE_API_BASE_URL and other config
+- [x] Add comments explaining each variable
+- [x] Verify no actual secrets are in .example files
+- [x] Document which variables are required vs. optional
 
 **Acceptance Criteria:**
 - Both .env.example files in git (committed, not .gitignore'd)
@@ -87,10 +87,10 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 2: .gitignore Verification
 
-- [ ] Verify .gitignore includes `.env` (but not `.env.example`)
-- [ ] Verify .gitignore includes `.venv`, `node_modules/`, `dist/`, `__pycache__/`
-- [ ] Verify no .env files are currently tracked in git
-- [ ] Run `git status` to confirm no .env files appear
+- [x] Verify .gitignore includes `.env` (but not `.env.example`)
+- [x] Verify .gitignore includes `.venv`, `node_modules/`, `dist/`, `__pycache__/`
+- [x] Verify no .env files are currently tracked in git
+- [x] Run `git status` to confirm no .env files appear
 
 **Acceptance Criteria:**
 - `git ls-files .env` returns nothing (no .env in git)
@@ -99,10 +99,10 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 3: Health Checks Validation
 
-- [ ] Verify all 3 services have healthcheck in docker-compose.yml
-- [ ] Test healthcheck manually: `docker compose exec db pg_isready`, `docker compose exec backend curl http://localhost:8000/health`, etc.
-- [ ] Verify `depends_on` uses `service_healthy` conditions
-- [ ] Confirm startup order: db → backend → frontend
+- [x] Verify all 3 services have healthcheck in docker-compose.yml
+- [x] Test healthcheck manually: `docker compose exec db pg_isready`, `docker compose exec backend curl http://localhost:8000/health`, etc.
+- [x] Verify `depends_on` uses `service_healthy` conditions
+- [x] Confirm startup order: db → backend → frontend
 
 **Acceptance Criteria:**
 - `docker compose ps` shows all services with health status
@@ -112,10 +112,10 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 4: Restart Policy and Error Handling
 
-- [ ] Verify docker-compose.yml has restart policy (e.g., `restart_policy: condition: on-failure`)
-- [ ] Test: stop one service (`docker compose stop backend`), verify it does not auto-restart
-- [ ] Document what to do if a service enters unhealthy state (logs, manual restart, cleanup)
-- [ ] Verify container logs do not contain unhandled exceptions on startup
+- [x] Verify docker-compose.yml has restart policy (e.g., `restart_policy: condition: on-failure`)
+- [x] Test: stop one service (`docker compose stop backend`), verify it does not auto-restart
+- [x] Document what to do if a service enters unhealthy state (logs, manual restart, cleanup)
+- [x] Verify container logs do not contain unhandled exceptions on startup
 
 **Acceptance Criteria:**
 - Compose file defines restart behavior explicitly
@@ -124,15 +124,15 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 5: Fresh-Clone Simulation
 
-- [ ] In a temp directory, clone the repo: `git clone https://github.com/ahattar10/task-tracker-fullstack.git temp-clone`
-- [ ] Navigate to temp-clone: `cd temp-clone`
-- [ ] Run: `docker compose -f infra/docker-compose.yml up --build -d`
-- [ ] Wait 5-10 seconds, run: `docker compose ps` (verify all healthy)
-- [ ] Run migrations: `docker compose exec -T backend alembic upgrade head`
-- [ ] Test frontend: `curl http://127.0.0.1:3000` (should return HTML)
-- [ ] Test backend: `curl http://127.0.0.1:8000/health` (should return JSON)
-- [ ] Register a test user via frontend UI
-- [ ] Create a test task and verify it persists
+- [x] In a temp directory, clone the repo: `git clone https://github.com/ahattar10/task-tracker-fullstack.git temp-clone`
+- [x] Navigate to temp-clone: `cd temp-clone`
+- [x] Run: `docker compose -f infra/docker-compose.yml up --build -d`
+- [x] Wait 5-10 seconds, run: `docker compose ps` (verify all healthy)
+- [x] Run migrations: `docker compose exec -T backend alembic upgrade head`
+- [x] Test frontend: `curl http://127.0.0.1:3000` (should return HTML)
+- [x] Test backend: `curl http://127.0.0.1:8000/health` (should return JSON)
+- [x] Register a test user via frontend UI
+- [x] Create a test task and verify it persists
 
 **Acceptance Criteria:**
 - Fresh clone starts from `git clone` with no manual setup required
@@ -142,20 +142,20 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 6: Documentation and Closeout
 
-- [ ] Update docs/setup-run-guide.md with Day 10 reliability additions (restart policies, health checks)
-- [ ] Record full Day 10 evidence in `docs/day-10-evidence-log.md`
-- [ ] Add troubleshooting section to docs/troubleshooting-notes.md if needed
-- [ ] Update roadmap/index if needed
+- [x] Update docs/setup-run-guide.md with Day 10 reliability additions (restart policies, health checks)
+- [x] Record full Day 10 evidence in `docs/day-10-evidence-log.md`
+- [x] Add troubleshooting section to docs/troubleshooting-notes.md if needed
+- [x] Update roadmap/index if needed
 
 ---
 
 ## Done Check
 
-- [ ] .env.example files created and documented (no secrets)
-- [ ] .gitignore verified (.env ignored, .env.example tracked)
-- [ ] All services have health checks and correct startup order
-- [ ] Fresh-clone scenario works without manual steps
-- [ ] Day 10 evidence and docs updates are complete
+- [x] .env.example files created and documented (no secrets)
+- [x] .gitignore verified (.env ignored, .env.example tracked)
+- [x] All services have health checks and correct startup order
+- [x] Fresh-clone scenario works without manual steps
+- [x] Day 10 evidence and docs updates are complete
 
 ## Notes
 

@@ -11,7 +11,7 @@
 - ✅ Day 7: Core Task UI + API Integration
 - ✅ Day 8: UX Polish and Error States
 - ✅ Day 9: Dockerize Services
-- 🟡 Day 10: Reliability Extras (next)
+- ✅ Day 10: Reliability Extras
 
 ---
 
@@ -264,10 +264,10 @@ Done check **✅ CONFIRMED**:
 ### Day 10 — Reliability + Environment Management
 Time: 3-5 hrs | Difficulty: Medium-Hard
 
-- [ ] .env.example with all required variables
-- [ ] Database persistence with named volume
-- [ ] Health checks in docker-compose
-- [ ] .gitignore verified (no .env committed)
+- [x] .env.example with all required variables
+- [x] Database persistence with named volume
+- [x] Health checks in docker-compose
+- [x] .gitignore verified (no .env committed)
 
 Done check:
 - Clone fresh → docker compose up → works
