@@ -14,12 +14,13 @@ Environment: Windows 11, VS Code workspace terminal
 
 - [x] Required services running
 - [x] Required dependencies installed
-- [ ] Correct environment variables set
+- [x] Correct environment variables set
 - [x] Clean starting git state recorded
 
 Notes:
 - Backend auth endpoints are available in codebase: /auth/register and /auth/login.
 - Node.js/npm runtime enabled via portable Node extracted to .tools/node.
+- Local env files validated: backend/.env includes JWT settings and frontend/.env includes VITE_API_BASE_URL and GA key placeholder.
 
 ## Validation Runs
 

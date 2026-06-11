@@ -12,12 +12,24 @@ function Invoke-Check {
     [hashtable]$Payload
   )
 
+  $requestArgs = @{
+    Method = $Method
+    Uri = $Url
+    ErrorAction = "Stop"
+  }
+
+  if ($PSVersionTable.PSVersion.Major -lt 6) {
+    $requestArgs.UseBasicParsing = $true
+  }
+
   try {
     if ($null -eq $Payload) {
-      $r = Invoke-WebRequest -Method $Method -Uri $Url -ErrorAction Stop
+      $r = Invoke-WebRequest @requestArgs
     } else {
       $b = $Payload | ConvertTo-Json
-      $r = Invoke-WebRequest -Method $Method -Uri $Url -ContentType "application/json" -Body $b -ErrorAction Stop
+      $requestArgs.ContentType = "application/json"
+      $requestArgs.Body = $b
+      $r = Invoke-WebRequest @requestArgs
     }
 
     return @{
