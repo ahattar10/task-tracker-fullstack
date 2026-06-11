@@ -235,6 +235,16 @@ API routing rule (important):
 
 ## Git And GitHub Quick Reference
 
+This repository ships with an author-guard pre-commit hook under `.githooks/pre-commit`. It refuses any commit whose author identity is not `ahattar10 <88306485+ahattar10@users.noreply.github.com>`. Activate it once per clone:
+
+```powershell
+git config --local core.hooksPath .githooks
+git config --local user.name  "ahattar10"
+git config --local user.email "88306485+ahattar10@users.noreply.github.com"
+```
+
+For details and the (rare) bypass procedure, see `.githooks/README.md`.
+
 If this is a brand-new local folder that is not cloned from GitHub yet:
 
 ```powershell

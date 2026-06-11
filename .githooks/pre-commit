@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Pre-commit author guard.
+#
+# Aborts the commit if the author identity that git is about to record does not
+# match the allowed pattern for this repository. Catches accidental -c overrides,
+# --author= flags, IDE-button commits, and global-config drift.
+#
+# Allowed identity (regex, anchored):
+#   name : ahattar10
+#   email: 88306485+ahattar10@users.noreply.github.com
+#
+# To bypass intentionally (e.g. a co-author test), set GIT_AUTHOR_GUARD_BYPASS=1
+# in the environment for that single commit. Use sparingly.
+
+set -euo pipefail
+
+if [ "${GIT_AUTHOR_GUARD_BYPASS:-0}" = "1" ]; then
+  echo "[author-guard] bypass requested via GIT_AUTHOR_GUARD_BYPASS=1; allowing commit." >&2
+  exit 0
+fi
+
+ALLOWED_NAME='ahattar10'
+ALLOWED_EMAIL='88306485+ahattar10@users.noreply.github.com'
+
+# Resolve the author identity git will actually use for this commit.
+# `git var GIT_AUTHOR_IDENT` honors -c overrides, --author=, env vars, and
+# config in the order git itself uses, so this is the source of truth.
+ident=$(git var GIT_AUTHOR_IDENT)
+
+# Format is: "Name <email> timestamp tz", extract name and email.
+name=$(printf '%s' "$ident" | sed -E 's/ <[^>]+> [0-9]+ [+-][0-9]+$//')
+email=$(printf '%s' "$ident" | sed -E 's/^.* <([^>]+)> [0-9]+ [+-][0-9]+$/\1/')
+
+fail=0
+
+if [ "$name" != "$ALLOWED_NAME" ]; then
+  echo "[author-guard] BLOCKED: author name '$name' does not match allowed '$ALLOWED_NAME'." >&2
+  fail=1
+fi
+
+if [ "$email" != "$ALLOWED_EMAIL" ]; then
+  echo "[author-guard] BLOCKED: author email '$email' does not match allowed '$ALLOWED_EMAIL'." >&2
+  fail=1
+fi
+
+if [ "$fail" -ne 0 ]; then
+  cat >&2 <<'EOF'
+
+Refusing to create a commit with an unrecognized author.
+Fix one of the following and try again:
+  1. Configure the repo identity:
+       git config --local user.name  "ahattar10"
+       git config --local user.email "88306485+ahattar10@users.noreply.github.com"
+  2. Or run the commit without ad-hoc identity overrides
+     (no `-c user.name=...`, no `--author=...`).
+  3. Or, for an intentional one-off, set GIT_AUTHOR_GUARD_BYPASS=1 for that
+     single commit.
+
+EOF
+  exit 1
+fi
+
+exit 0
