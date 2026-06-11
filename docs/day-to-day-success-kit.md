@@ -60,7 +60,32 @@ Use this order every time you sit down to work:
 1. Open the project in VS Code.
 2. Read the roadmap in `docs/project-plan.md`.
 3. Check the last working note in `docs/home-handoff.rtf`.
-4. Decide on one small task only.
+4. Run the preflight gate before coding.
+5. Decide on one small task only.
+
+### Start-of-Day Preflight Gate (Required)
+
+Run from repository root:
+
+```powershell
+git status -sb
+
+# backend
+Set-Location backend
+./.venv/Scripts/python.exe -m app.dev_server
+
+# in another terminal from repo root
+Set-Location ..
+./scripts/enable-portable-node.ps1
+Set-Location frontend
+npm run build
+
+# from repo root (backend running)
+Set-Location ..
+./scripts/day6-auth-verify.ps1
+```
+
+Record PASS/FAIL in the day's evidence log before implementation.
 
 ### Build Session
 

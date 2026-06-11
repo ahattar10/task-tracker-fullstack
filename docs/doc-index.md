@@ -2,6 +2,8 @@
 
 Use this order for review and execution.
 
+Preflight Rule: Before Step 1 coding on any day, run start-of-day preflight and record the result in that day's evidence log.
+
 ## Day 1
 
 1. `day-1-checklist.md`

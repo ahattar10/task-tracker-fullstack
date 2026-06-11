@@ -28,6 +28,11 @@ All criteria must be true.
 - Every planned item for the day is either complete or explicitly deferred.
 - No silent skips.
 
+0. Preflight Gate Complete (Start-of-Day)
+- A start-of-day preflight check was run before implementation began.
+- Preflight result is recorded in the evidence log with PASS/FAIL.
+- If preflight failed, blocker and mitigation are documented before coding.
+
 2. Validation Complete
 - Required runtime checks completed.
 - API/UI behavior verified for that day's scope.
@@ -58,6 +63,7 @@ Run this in order and mark each item.
 
 - [ ] Day checklist reviewed and updated.
 - [ ] Day evidence log completed with command/output summaries.
+- [ ] Start-of-day preflight recorded and passed (or blocker documented).
 - [ ] Validation checks rerun for final confirmation.
 - [ ] Roadmap status updated.
 - [ ] Doc index/readme links updated if new docs were added.

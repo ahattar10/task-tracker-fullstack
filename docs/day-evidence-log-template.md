@@ -17,6 +17,17 @@ Environment:
 - [ ] Correct environment variables set
 - [ ] Clean starting git state recorded
 
+## Pre-Execution Validation Runs (Required)
+
+| Check ID | Command or Action | Expected | Actual | Status |
+|---|---|---|---|---|
+| P1 | git status -sb | Branch clean/synced baseline confirmed |  | PASS/FAIL |
+| P2 | Toolchain check (node/npm + python venv) | Required runtimes available |  | PASS/FAIL |
+| P3 | Frontend build check | Frontend build succeeds |  | PASS/FAIL |
+| P4 | Backend/auth smoke check | Health and auth checks return expected status codes |  | PASS/FAIL |
+
+Preflight Result: PASS/FAIL
+
 ## Validation Runs
 
 | Check ID | Command or Action | Expected | Actual | Status |
