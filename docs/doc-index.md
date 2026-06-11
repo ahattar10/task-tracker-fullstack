@@ -1,4 +1,4 @@
-# Documentation Index (Day 1 to Day 9)
+# Documentation Index (Day 1 to Day 10)
 
 Use this order for review and execution.
 
@@ -79,6 +79,14 @@ Preflight Rule: Before Step 1 coding on any day, run start-of-day preflight and 
 5. `infra/docker-compose.yml`
 6. `day-9-evidence-log.md`
 7. `troubleshooting-notes.md` (if blocked)
+
+## Day 10
+
+1. `day-10-checklist.md`
+2. `master-roadmap.md` (Day 10 section)
+3. `setup-run-guide.md` (Docker Compose reliability)
+4. `day-10-evidence-log.md`
+5. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 
