@@ -67,53 +67,53 @@ Day 7 connects frontend to real task operations and creates the first end-to-end
 
 ### Step 1: Task Service Layer
 
-- [ ] Add GET /tasks client with query params (page, limit, status, priority, search)
-- [ ] Add POST /tasks client
-- [ ] Add PUT /tasks/{id} client
-- [ ] Add DELETE /tasks/{id} client
-- [ ] Ensure Authorization bearer token is attached to task requests
+- [x] Add GET /tasks client with query params (page, limit, status, priority, search)
+- [x] Add POST /tasks client
+- [x] Add PUT /tasks/{id} client
+- [x] Add DELETE /tasks/{id} client
+- [x] Ensure Authorization bearer token is attached to task requests
 
 ### Step 2: Task List UI (Card Layout)
 
-- [ ] Render task cards from API response items
-- [ ] Show title, description, status, priority, and timestamps
-- [ ] Add filter controls for status, priority, and search
-- [ ] Add pagination controls using page/pages/total
+- [x] Render task cards from API response items
+- [x] Show title, description, status, priority, and timestamps
+- [x] Add filter controls for status, priority, and search
+- [x] Add pagination controls using page/pages/total
 
 ### Step 3: Shared Task Modal (Create/Edit)
 
-- [ ] Create reusable modal form for create and edit
-- [ ] Pre-fill existing values in edit mode
-- [ ] Validate title and field constraints before submit
-- [ ] On success, close modal and refetch list
+- [x] Create reusable modal form for create and edit
+- [x] Pre-fill existing values in edit mode
+- [x] Validate title and field constraints before submit
+- [x] On success, close modal and refetch list
 
 ### Step 4: Delete + Complete Actions
 
-- [ ] Add delete action per card
-- [ ] Add confirmation dialog before delete
-- [ ] Add quick complete action (status -> done)
-- [ ] Refetch list after each successful mutation
+- [x] Add delete action per card
+- [x] Add confirmation dialog before delete
+- [x] Add quick complete action (status -> done)
+- [x] Refetch list after each successful mutation
 
 ### Step 5: State Handling
 
-- [ ] Loading state while list or mutation requests are in progress
-- [ ] Empty state when no tasks are available
-- [ ] Error state with retry action when API calls fail
-- [ ] Success feedback after create/update/delete
+- [x] Loading state while list or mutation requests are in progress
+- [x] Empty state when no tasks are available
+- [x] Error state with retry action when API calls fail
+- [x] Success feedback after create/update/delete
 
 ### Step 6: Analytics Events
 
-- [ ] Emit task_created on create success
-- [ ] Emit task_updated on update success
-- [ ] Emit task_deleted on delete success
-- [ ] Emit task_completed when status changes to done
+- [x] Emit task_created on create success
+- [x] Emit task_updated on update success
+- [x] Emit task_deleted on delete success
+- [x] Emit task_completed when status changes to done
 
 ### Step 7: Validation + Evidence
 
 - [ ] Validate full CRUD flow in browser
 - [ ] Validate filters and pagination behavior
 - [ ] Validate loading/empty/error/success states
-- [ ] Capture proof in docs/day-7-evidence-log.md
+- [x] Capture proof in docs/day-7-evidence-log.md
 
 ---
 
