@@ -6,7 +6,11 @@
 - ✅ Day 2: Backend Scaffold (/health endpoint)
 - ✅ Day 3: Postgres + Task Model + CRUD
 - ✅ Day 4: Authentication
-- 🔜 Day 5: API Quality
+- ✅ Day 5: API Quality
+- ✅ Day 6: Frontend Scaffold
+- ✅ Day 7: Core Task UI + API Integration
+- ✅ Day 8: UX Polish and Error States
+- 🟡 Day 9: Dockerize Services (next)
 
 ---
 
@@ -112,22 +116,22 @@ Done check:
 
 ---
 
-### Day 5 — API Quality
+### Day 5 — API Quality ✅
 Time: 3-5 hrs | Difficulty: Medium
 
 Step 1: Request Validation
-- [ ] Pydantic schemas for all request bodies
-- [ ] Proper HTTP status codes everywhere
-- [ ] Consistent error format: { "detail": "message", "status_code": X }
+- [x] Pydantic schemas for all request bodies
+- [x] Proper HTTP status codes everywhere
+- [x] Consistent error format: { "detail": "message", "status_code": X }
 
 Step 2: Pagination
-- [ ] GET /tasks?page=1&limit=20
-- [ ] Return: { items: [...], total: 45, page: 1, pages: 3 }
+- [x] GET /tasks?page=1&limit=20
+- [x] Return: { items: [...], total: 45, page: 1, pages: 3 }
 
 Step 3: Filtering
-- [ ] GET /tasks?status=completed
-- [ ] GET /tasks?priority=high
-- [ ] GET /tasks?search=keyword (search title + description)
+- [x] GET /tasks?status=done
+- [x] GET /tasks?priority=high
+- [x] GET /tasks?search=keyword (search title + description)
 
 Done check:
 - Invalid inputs return clear error messages
@@ -136,33 +140,33 @@ Done check:
 
 ---
 
-### Day 6 — Frontend Scaffold
+### Day 6 — Frontend Scaffold ✅
 Time: 3-5 hrs | Difficulty: Medium
 
 Step 1: React + TypeScript Setup
-- [ ] Create React app with TypeScript (Vite or CRA)
-- [ ] Install: react-router-dom, axios
-- [ ] Folder structure: components/, pages/, services/, hooks/
+- [x] Create React app with TypeScript (Vite or CRA)
+- [x] Install: react-router-dom, axios
+- [x] Folder structure: components/, pages/, services/, hooks/
 
 Step 2: Routing + Layout
-- [ ] Routes: /login, /register, /tasks, /tasks/:id
-- [ ] Layout component (header, sidebar placeholder, main area)
-- [ ] Basic styling (Tailwind or CSS modules)
+- [x] Routes: /login, /register, /tasks, /tasks/:id
+- [x] Layout component (header, sidebar placeholder, main area)
+- [x] Basic styling (Tailwind or CSS modules)
 
 Step 3: Login + Register Pages
-- [ ] Login form (email, password, submit button)
-- [ ] Register form (email, password, confirm password)
-- [ ] Form validation
-- [ ] Call backend auth endpoints
-- [ ] Store JWT token (localStorage)
-- [ ] Redirect to /tasks on success
-- [ ] Show error messages on failure
+- [x] Login form (email, password, submit button)
+- [x] Register form (email, password, confirm password)
+- [x] Form validation
+- [x] Call backend auth endpoints
+- [x] Store JWT token (localStorage)
+- [x] Redirect to /tasks on success
+- [x] Show error messages on failure
 
 ADD: GA4 Integration
-- [ ] Add GA4 snippet to index.html or main.tsx
-- [ ] Track: page_view (automatic)
-- [ ] Track: user_registered event
-- [ ] Track: user_login event
+- [x] Add GA4 snippet to index.html or main.tsx
+- [x] Track: page_view (automatic)
+- [x] Track: user_registered event
+- [x] Track: user_login event
 
 Done check:
 - Frontend compiles and runs
@@ -171,38 +175,38 @@ Done check:
 
 ---
 
-### Day 7 — Core Task UI + API Integration
+### Day 7 — Core Task UI + API Integration ✅
 Time: 5-7 hrs | Difficulty: Medium-Hard
 
 Step 1: Task List Component
-- [ ] Fetch tasks from GET /tasks (with auth header)
-- [ ] Display tasks in list/card layout
-- [ ] Show: title, status, priority, due date
-- [ ] Filter bar: by status, priority, search
-- [ ] Pagination controls
+- [x] Fetch tasks from GET /tasks (with auth header)
+- [x] Display tasks in list/card layout
+- [x] Show: title, status, priority, due date
+- [x] Filter bar: by status, priority, search
+- [x] Pagination controls
 
 Step 2: Task Form Component
-- [ ] Create task form (title, description, due date, priority)
-- [ ] Edit task form (pre-filled, PUT request)
-- [ ] POST /tasks → add to list
-- [ ] PUT /tasks/{id} → update in list
-- [ ] Form validation
+- [x] Create task form (title, description, due date, priority)
+- [x] Edit task form (pre-filled, PUT request)
+- [x] POST /tasks → add to list
+- [x] PUT /tasks/{id} → update in list
+- [x] Form validation
 
 Step 3: Delete Task
-- [ ] Delete button on each task
-- [ ] Confirmation dialog
-- [ ] DELETE /tasks/{id} → remove from list
+- [x] Delete button on each task
+- [x] Confirmation dialog
+- [x] DELETE /tasks/{id} → remove from list
 
 Step 4: States
-- [ ] Loading state: spinner/skeleton during API calls
-- [ ] Empty state: "No tasks yet — create your first one"
-- [ ] Error state: "Couldn't load tasks. Try again."
+- [x] Loading state: spinner/skeleton during API calls
+- [x] Empty state: "No tasks yet — create your first one"
+- [x] Error state: "Couldn't load tasks. Try again."
 
 ADD: GA4 Events
-- [ ] task_created
-- [ ] task_updated
-- [ ] task_deleted
-- [ ] task_completed (when status changes to done)
+- [x] task_created
+- [x] task_updated
+- [x] task_deleted
+- [x] task_completed (when status changes to done)
 
 Done check:
 - Full CRUD works end-to-end in browser
@@ -212,19 +216,19 @@ Done check:
 
 ## Week 2: Polish + DevOps + Ship
 
-### Day 8 — UX Polish and Error States
+### Day 8 — UX Polish and Error States ✅
 Time: 3-5 hrs | Difficulty: Medium
 
-- [ ] Skeleton loaders while fetching tasks
-- [ ] Button spinner during form submission
-- [ ] Empty states for all list scenarios
-- [ ] Error states: API down, network error, session expired
-- [ ] Protected routes: redirect to /login if no token
-- [ ] Logout button clears token + redirects
+- [x] Skeleton loaders while fetching tasks
+- [x] Button spinner during form submission
+- [x] Empty states for all list scenarios
+- [x] Error states: API down, network error, session expired
+- [x] Protected routes: redirect to /login if no token
+- [x] Logout button clears token + redirects
 
 Done check:
-- All four states visible and working: loading, empty, error, success
-- Error messages are user-facing, not raw error objects
+- All four states visible and working: loading, empty, error, success ✓
+- Error messages are user-facing, not raw error objects ✓
 
 ---
 

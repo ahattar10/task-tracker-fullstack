@@ -9,7 +9,8 @@
 - ✅ Day 5: API Quality
 - ✅ Day 6: Frontend Scaffold
 - ✅ Day 7: Core Task UI + API Integration
-- 🟡 Day 8: UX Polish and Error States (next)
+- ✅ Day 8: UX Polish and Error States
+- 🟡 Day 9: Dockerize Services (next)
 
 ---
 
@@ -139,38 +140,38 @@ Done check:
 
 ---
 
-### Day 6 — Frontend Scaffold
+### Day 6 — Frontend Scaffold ✅
 Time: 3-5 hrs | Difficulty: Medium
 
 Step 1: React + TypeScript Setup
-- [ ] Create React app with TypeScript (Vite or CRA)
-- [ ] Install: react-router-dom, axios
-- [ ] Folder structure: components/, pages/, services/, hooks/
+- [x] Create React app with TypeScript (Vite or CRA)
+- [x] Install: react-router-dom, axios
+- [x] Folder structure: components/, pages/, services/, hooks/
 
 Step 2: Routing + Layout
-- [ ] Routes: /login, /register, /tasks, /tasks/:id
-- [ ] Layout component (header, sidebar placeholder, main area)
-- [ ] Basic styling (Tailwind or CSS modules)
+- [x] Routes: /login, /register, /tasks, /tasks/:id
+- [x] Layout component (header, sidebar placeholder, main area)
+- [x] Basic styling (Tailwind or CSS modules)
 
 Step 3: Login + Register Pages
-- [ ] Login form (email, password, submit button)
-- [ ] Register form (email, password, confirm password)
-- [ ] Form validation
-- [ ] Call backend auth endpoints
-- [ ] Store JWT token (localStorage)
-- [ ] Redirect to /tasks on success
-- [ ] Show error messages on failure
+- [x] Login form (email, password, submit button)
+- [x] Register form (email, password, confirm password)
+- [x] Form validation
+- [x] Call backend auth endpoints
+- [x] Store JWT token (localStorage)
+- [x] Redirect to /tasks on success
+- [x] Show error messages on failure
 
 ADD: GA4 Integration
-- [ ] Add GA4 snippet to index.html or main.tsx
-- [ ] Track: page_view (automatic)
-- [ ] Track: user_registered event
-- [ ] Track: user_login event
+- [x] Add GA4 snippet to index.html or main.tsx
+- [x] Track: page_view (automatic)
+- [x] Track: user_registered event
+- [x] Track: user_login event
 
 Done check:
-- Frontend compiles and runs
-- Auth pages render
-- Login/Register calls backend successfully
+- Frontend compiles and runs ✓
+- Auth pages render ✓
+- Login/Register calls backend successfully ✓
 
 ---
 
@@ -215,19 +216,19 @@ Done check:
 
 ## Week 2: Polish + DevOps + Ship
 
-### Day 8 — UX Polish and Error States
+### Day 8 — UX Polish and Error States ✅
 Time: 3-5 hrs | Difficulty: Medium
 
-- [ ] Skeleton loaders while fetching tasks
-- [ ] Button spinner during form submission
-- [ ] Empty states for all list scenarios
-- [ ] Error states: API down, network error, session expired
-- [ ] Protected routes: redirect to /login if no token
-- [ ] Logout button clears token + redirects
+- [x] Skeleton loaders while fetching tasks
+- [x] Button spinner during form submission
+- [x] Empty states for all list scenarios
+- [x] Error states: API down, network error, session expired
+- [x] Protected routes: redirect to /login if no token
+- [x] Logout button clears token + redirects
 
 Done check:
-- All four states visible and working: loading, empty, error, success
-- Error messages are user-facing, not raw error objects
+- All four states visible and working: loading, empty, error, success ✓
+- Error messages are user-facing, not raw error objects ✓
 
 ---
 
