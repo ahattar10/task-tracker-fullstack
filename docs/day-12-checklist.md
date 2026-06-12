@@ -61,13 +61,13 @@ A CI pipeline catches regressions before they reach the main branch:
 
 | Check ID | Command or Action | Expected | Actual | Status |
 |---|---|---|---|---|
-| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | TBD | TBD |
-| P2 | Review `.github/workflows/` contents | CI workflow target identified or creation needed | TBD | TBD |
-| P3 | Confirm backend test command from Day 11 | Existing backend tests are still the baseline | TBD | TBD |
-| P4 | Confirm frontend test command from Day 11 | Existing frontend tests are still the baseline | TBD | TBD |
-| P5 | Review `README.md` badge section | Badge placement and wording understood | TBD | TBD |
+| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | `## main...origin/main` | PASS |
+| P2 | Review `.github/workflows/` contents | CI workflow target identified or creation needed | `.github/workflows/ci.yml` present | PASS |
+| P3 | Confirm backend test command from Day 11 | Existing backend tests are still the baseline | `python -m pytest -q` | PASS |
+| P4 | Confirm frontend test command from Day 11 | Existing frontend tests are still the baseline | `npm test -- --run` | PASS |
+| P5 | Review `README.md` badge section | Badge placement and wording understood | Badge points to `ci.yml` workflow | PASS |
 
-Preflight Result: (record PASS / FAIL in evidence log before Step 1)
+Preflight Result: PASS
 
 ---
 
@@ -75,10 +75,10 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 1: CI Workflow Scaffolding
 
-- [ ] Create or update `.github/workflows/ci.yml`
-- [ ] Trigger on `push` and `pull_request`
-- [ ] Define backend and frontend jobs with clear names
-- [ ] Use stable, pinned setup actions where practical
+- [x] Create or update `.github/workflows/ci.yml`
+- [x] Trigger on `push` and `pull_request`
+- [x] Define backend and frontend jobs with clear names
+- [x] Use stable, pinned setup actions where practical
 
 Acceptance Criteria:
 - Workflow file exists
@@ -87,11 +87,11 @@ Acceptance Criteria:
 
 ### Step 2: Backend CI Job
 
-- [ ] Start a Postgres service for backend tests
-- [ ] Install backend dependencies
-- [ ] Run database migrations before backend tests
-- [ ] Run backend tests with the Day 11 command
-- [ ] Ensure backend job fails clearly on test errors
+- [x] Start a Postgres service for backend tests
+- [x] Install backend dependencies
+- [x] Run database migrations before backend tests
+- [x] Run backend tests with the Day 11 command
+- [x] Ensure backend job fails clearly on test errors
 
 Acceptance Criteria:
 - Backend tests run successfully in CI
@@ -101,10 +101,10 @@ Acceptance Criteria:
 
 ### Step 3: Frontend CI Job
 
-- [ ] Install frontend dependencies
-- [ ] Run frontend tests with the Day 11 command
-- [ ] Run the production frontend build
-- [ ] Ensure frontend job fails clearly on test errors
+- [x] Install frontend dependencies
+- [x] Run frontend tests with the Day 11 command
+- [x] Run the production frontend build
+- [x] Ensure frontend job fails clearly on test errors
 
 Acceptance Criteria:
 - Frontend tests run successfully in CI
@@ -113,9 +113,9 @@ Acceptance Criteria:
 
 ### Step 4: README Badge
 
-- [ ] Add or confirm a CI badge in `README.md`
-- [ ] Ensure the badge links to the correct workflow
-- [ ] Keep badge wording consistent with the workflow name
+- [x] Add or confirm a CI badge in `README.md`
+- [x] Ensure the badge links to the correct workflow
+- [x] Keep badge wording consistent with the workflow name
 
 Acceptance Criteria:
 - Badge is visible and points to GitHub Actions
@@ -123,9 +123,9 @@ Acceptance Criteria:
 
 ### Step 5: Optional Linting
 
-- [ ] Decide whether backend linting should be included
-- [ ] Decide whether frontend linting should be included
-- [ ] Add lint jobs only if they are stable and quick
+- [x] Decide to defer backend linting for Day 12 scope
+- [x] Decide to defer frontend linting for Day 12 scope
+- [x] Keep lint jobs out of CI until they are stable and quick
 
 Acceptance Criteria:
 - Optional linting does not block the main test flow
@@ -133,12 +133,12 @@ Acceptance Criteria:
 
 ### Step 6: Final Validation and Documentation
 
-- [ ] Run the workflow locally or push to trigger GitHub Actions
-- [ ] Verify all jobs pass
-- [ ] Capture outputs in `docs/day-12-evidence-log.md`
-- [ ] Update `docs/master-roadmap.md` if needed
-- [ ] Update `docs/doc-index.md` if needed
-- [ ] Update binder docs if shared docs changed
+- [x] Run the workflow locally or push to trigger GitHub Actions
+- [x] Verify all jobs pass
+- [x] Capture outputs in `docs/day-12-evidence-log.md`
+- [x] Update `docs/master-roadmap.md` if needed
+- [x] Update `docs/doc-index.md` if needed
+- [x] Update binder docs if shared docs changed
 
 Acceptance Criteria:
 - Pipeline passes on the target branch

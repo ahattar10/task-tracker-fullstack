@@ -79,10 +79,10 @@ Preflight Result: PASS
 
 - Checklist updated: docs/day-13-checklist.md
 - Evidence log updated: docs/day-13-evidence-log.md
-- Testing guidance updated: docs/testing-checklist.md (if changed)
-- Roadmap updated: docs/master-roadmap.md (if changed)
-- Doc index updated: docs/doc-index.md (if changed)
-- README updated: README.md (if changed)
+- Testing guidance updated: no change required
+- Roadmap updated: docs/master-roadmap.md
+- Doc index updated: reviewed, no change required
+- README updated: README.md
 
 ## Git Verification
 
@@ -92,19 +92,19 @@ Preflight Result: PASS
 
 ## Issues and Resolutions
 
-- Issue: CORS preflight returned 500 and auth endpoints returned 500 in production.
-- Resolution: Fixed CORS middleware handling and applied production DB migrations to head using public Railway database URL.
-- Residual risk: Rotate exposed database credentials and update Railway `DATABASE_URL` afterward.
+- Issue: Production rollout initially included CORS/preflight failures and a stale duplicate Railway project that left obsolete failed deployment records in GitHub.
+- Resolution: Fixed CORS middleware handling, applied production DB migrations to head using the Railway database URL, removed the stale Railway project, and deleted obsolete GitHub deployment records so the active production target is the only remaining deployment.
+- Residual risk: GA4 verification remains N/A until `VITE_GA_MEASUREMENT_ID` is configured, and database credential rotation is still recommended.
 
 ## Day 13 Completion Gate
 
 - [x] Scope complete or explicitly deferred
 - [x] Validation complete
 - [x] Evidence complete
-- [ ] Documentation complete
-- [ ] Source control complete
+- [x] Documentation complete
+- [x] Source control complete
 
-Day 13 Gate Result: PASS (pending final docs sync + commit/push)
+Day 13 Gate Result: PASS
 
 ## Handoff to Next Day
 

@@ -85,14 +85,14 @@ Preflight Result: PASS
 ## Git Verification
 
 - Branch: main
-- git status --short result: TBD
-- Synced with remote: TBD
+- git status --short result: clean
+- Synced with remote: yes
 
 ## Issues and Resolutions
 
-- Issue: TBD
-- Resolution: TBD
-- Residual risk: TBD
+- Issue: Historical CI runs included failed backend service startup attempts, which made the workflow history look noisier than the current passing state.
+- Resolution: Confirmed the current `ci.yml` passes on `main`, with backend migrations/tests and frontend tests/build all green on the latest commit.
+- Residual risk: Old failed runs can still remain visible in GitHub Actions history even after the current workflow is passing.
 
 ## Day 12 Completion Gate
 

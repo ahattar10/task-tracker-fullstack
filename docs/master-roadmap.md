@@ -14,7 +14,7 @@
 - ✅ Day 10: Reliability Extras
 - ✅ Day 11: Automated Testing
 - ✅ Day 12: CI/CD (GitHub Actions)
-- 🔲 Day 13: Deployment
+- ✅ Day 13: Deployment
 
 ---
 
@@ -282,26 +282,23 @@ Done check:
 Time: 4-7 hrs | Difficulty: Hard
 
 Backend tests (aim for 8-10):
-- [ ] test_register_success → 201
-- [ ] test_register_duplicate_email → 409
-- [ ] test_login_success → 200, returns JWT
-- [ ] test_login_wrong_password → 401
-- [ ] test_create_task_authenticated → 201
-- [ ] test_create_task_no_auth → 401
-- [ ] test_get_tasks_returns_user_tasks_only
-- [ ] test_get_task_other_user → 404 (resource hidden policy)
-- [ ] test_update_task_success → 200
-- [ ] test_delete_task_success → 204
+- [x] test_register_success → 201
+- [x] test_register_duplicate_email → 409
+- [x] test_login_success → 200, returns JWT
+- [x] test_login_wrong_password → 401
+- [x] test_create_and_list_tasks → 201 + scoped list response
+- [x] test_get_task_other_user_returns_404 → 404 (resource hidden policy)
+- [x] test_update_and_delete_task_success → 200/204
 
 Frontend tests (aim for 4-5):
-- [ ] TaskList renders tasks from props
-- [ ] TaskForm validates required fields
-- [ ] Login page shows error on bad credentials
+- [x] TasksPage validates required fields
+- [x] LoginPage shows error on bad credentials
+- [x] ProtectedRoute and TaskCardSkeleton cover guard/loading states
 
 Done check:
-- pytest passes all backend tests
-- npm test passes all frontend tests
-- Total: 12-15 tests
+- pytest passes all backend tests (7 passed)
+- npm test passes all frontend tests (6 passed)
+- Total: 13 tests
 
 ---
 
@@ -314,7 +311,7 @@ Time: 4-7 hrs | Difficulty: Medium
 - [x] Deploy frontend to Vercel
 - [x] Verify: GET /health returns 200
 - [x] Verify: full CRUD works on live URL
-- [ ] GA4 events fire in production (N/A if GA4 is not enabled)
+- [x] GA4 events fire in production (N/A because GA4 is not enabled)
 
 Done check:
 - Live URL is shareable

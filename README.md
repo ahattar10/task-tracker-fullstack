@@ -4,6 +4,9 @@
 
 Full-stack task management app built over 13 days with Docker, FastAPI, React, PostgreSQL, automated testing, CI, and deployment. Days 1-13 complete, including production deployment to Railway and Vercel.
 
+- Live app: https://task-tracker-fullstack-rho.vercel.app
+- Backend health: https://task-tracker-fullstack-production.up.railway.app/health
+
 ## Goal
 Build a full-stack task management app with:
 - React + TypeScript frontend
