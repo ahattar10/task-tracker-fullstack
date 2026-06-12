@@ -77,3 +77,22 @@ def test_login_wrong_password():
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     assert response.json()["detail"] == "Invalid email or password"
+
+
+def test_cors_allows_custom_portfolio_subdomain():
+    client = TestClient(app)
+
+    response = client.options(
+        "/health",
+        headers={
+            "Origin": "https://app.anthony-hattar.com",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+
+    assert response.status_code == status.HTTP_200_OK
+    assert (
+        response.headers["Access-Control-Allow-Origin"]
+        == "https://app.anthony-hattar.com"
+    )
+    assert response.headers["Access-Control-Allow-Credentials"] == "true"

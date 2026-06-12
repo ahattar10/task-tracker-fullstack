@@ -30,6 +30,12 @@ def is_origin_allowed(origin: str) -> bool:
     if origin_host.endswith(".vercel.app"):
         return True
 
+    # Allow the portfolio domain and its app subdomains.
+    if origin_host == "anthony-hattar.com" or origin_host.endswith(
+        ".anthony-hattar.com"
+    ):
+        return True
+
     return False
 
 
