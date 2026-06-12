@@ -84,10 +84,10 @@ Preflight Result: (record PASS / FAIL in evidence log before Step 1)
 
 ### Step 1: Production Readiness
 
-- [ ] Confirm target services and deployment URLs
-- [ ] Verify required environment variables for backend and frontend
-- [ ] Confirm database migration strategy for production
-- [ ] Review rollback or redeploy plan
+- [x] Confirm target services and deployment URLs
+- [x] Verify required environment variables for backend and frontend
+- [x] Confirm database migration strategy for production
+- [x] Review rollback or redeploy plan
 
 Acceptance Criteria:
 - Deployment targets are identified
@@ -96,10 +96,10 @@ Acceptance Criteria:
 
 ### Step 2: Backend Deployment
 
-- [ ] Deploy backend to Railway
-- [ ] Set production environment variables
-- [ ] Run production database migrations
-- [ ] Confirm backend service is healthy
+- [x] Deploy backend to Railway
+- [x] Set production environment variables
+- [x] Run production database migrations
+- [x] Confirm backend service is healthy
 
 Acceptance Criteria:
 - Backend is reachable in production
@@ -108,10 +108,10 @@ Acceptance Criteria:
 
 ### Step 3: Frontend Deployment
 
-- [ ] Deploy frontend to Vercel
-- [ ] Set production environment variables if needed
-- [ ] Confirm frontend loads successfully
-- [ ] Verify frontend talks to the production backend
+- [x] Deploy frontend to Vercel
+- [x] Set production environment variables if needed
+- [x] Confirm frontend loads successfully
+- [x] Verify frontend talks to the production backend
 
 Acceptance Criteria:
 - Frontend is reachable in production
@@ -120,9 +120,9 @@ Acceptance Criteria:
 
 ### Step 4: Live Application Verification
 
-- [ ] Verify `GET /health` returns 200 in production
-- [ ] Verify login/register flow works in production
-- [ ] Verify full CRUD works on the live URL
+- [x] Verify `GET /health` returns 200 in production
+- [x] Verify login/register flow works in production
+- [x] Verify full CRUD works on the live URL
 - [ ] Verify GA4 events fire if enabled
 
 Acceptance Criteria:
@@ -132,7 +132,7 @@ Acceptance Criteria:
 
 ### Step 5: Documentation and Cleanup
 
-- [ ] Capture deployment outputs in `docs/day-13-evidence-log.md`
+- [x] Capture deployment outputs in `docs/day-13-evidence-log.md`
 - [ ] Update `docs/master-roadmap.md` if needed
 - [ ] Update `docs/doc-index.md` if needed
 - [ ] Update README deployment links if needed
@@ -146,11 +146,11 @@ Acceptance Criteria:
 
 ## Done Check
 
-- [ ] Backend deployed successfully
-- [ ] Frontend deployed successfully
-- [ ] Production health check passed
-- [ ] Live CRUD verified
-- [ ] Day 13 evidence log complete
+- [x] Backend deployed successfully
+- [x] Frontend deployed successfully
+- [x] Production health check passed
+- [x] Live CRUD verified
+- [x] Day 13 evidence log complete
 - [ ] Day 13 updates committed and pushed
 
 ## Notes

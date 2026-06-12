@@ -1,6 +1,6 @@
 # Day 13 Evidence Log
 
-Date: YYYY-MM-DD
+Date: 2026-06-12
 Owner: Anthony Hattar
 Day Scope: Deploy the app to production hosting, verify live behavior, and document production evidence
 Environment: Windows 11, VS Code workspace terminal
@@ -20,11 +20,11 @@ Environment: Windows 11, VS Code workspace terminal
 
 ## Preconditions
 
-- [ ] Day 12 gate confirmed PASS
-- [ ] Working directory: task-tracker-fullstack root
-- [ ] Git branch clean and synced
-- [ ] Backend and frontend validation complete
-- [ ] Deployment targets and environment variables identified
+- [x] Day 12 gate confirmed PASS
+- [x] Working directory: task-tracker-fullstack root
+- [x] Git branch clean and synced
+- [x] Backend and frontend validation complete
+- [x] Deployment targets and environment variables identified
 
 Notes:
 
@@ -36,37 +36,37 @@ Notes:
 
 | Check ID | Command or Action | Expected | Actual | Status |
 |---|---|---|---|---|
-| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | TBD | TBD |
-| P2 | Review Day 12 evidence log | CI baseline confirmed | TBD | TBD |
-| P3 | Confirm backend build/test command | Backend remains stable before deploy | TBD | TBD |
-| P4 | Confirm frontend build/test command | Frontend remains stable before deploy | TBD | TBD |
-| P5 | Review production env var list | Deployment inputs understood | TBD | TBD |
+| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | `## main...origin/main` | PASS |
+| P2 | Review Day 12 evidence log | CI baseline confirmed | Day 12 gate reviewed and confirmed PASS | PASS |
+| P3 | Confirm backend build/test command | Backend remains stable before deploy | Railway deployment healthy and auth endpoints verified via API checks | PASS |
+| P4 | Confirm frontend build/test command | Frontend remains stable before deploy | Vercel deployment loads and authenticates against production backend | PASS |
+| P5 | Review production env var list | Deployment inputs understood | Verified `VITE_API_BASE_URL` on Vercel and backend env vars on Railway; CORS allowlist updated | PASS |
 
-Preflight Result: TBD
+Preflight Result: PASS
 
 ## Implementation Evidence
 
 | Check ID | Command or Action | Expected | Actual | Status |
 |---|---|---|---|---|
-| I1 | Deployment target review | Hosting targets identified | TBD | TBD |
-| I2 | Backend deployment | Backend available in production | TBD | TBD |
-| I3 | Backend migrations | Production schema updated successfully | TBD | TBD |
-| I4 | Frontend deployment | Frontend available in production | TBD | TBD |
-| I5 | Production health check | `/health` returns 200 in production | TBD | TBD |
-| I6 | Live CRUD verification | Core app flows work on the live URL | TBD | TBD |
-| I7 | GA4 verification | Analytics events fire in production if enabled | TBD | TBD |
-| I8 | Final deployment confirmation | Production rollout is complete | TBD | TBD |
+| I1 | Deployment target review | Hosting targets identified | Backend: Railway (`https://task-tracker-fullstack-production.up.railway.app`), Frontend: Vercel (`https://task-tracker-fullstack-rho.vercel.app`) | PASS |
+| I2 | Backend deployment | Backend available in production | Railway deployment active and successful | PASS |
+| I3 | Backend migrations | Production schema updated successfully | Ran `alembic upgrade head` against public Railway DB URL; reached `0003 (head)` | PASS |
+| I4 | Frontend deployment | Frontend available in production | Vercel deployment ready and accessible | PASS |
+| I5 | Production health check | `/health` returns 200 in production | Live check returned HTTP 200 with `{"status":"ok","environment":"production"}` | PASS |
+| I6 | Live CRUD verification | Core app flows work on the live URL | Login/register and task CRUD verified on live app | PASS |
+| I7 | GA4 verification | Analytics events fire in production if enabled | `VITE_GA_MEASUREMENT_ID` not configured in Vercel for this rollout | N/A |
+| I8 | Final deployment confirmation | Production rollout is complete | Frontend-backend integration validated end-to-end in production | PASS |
 
 ## Production Run Summary
 
 | Step | Command or Trigger | Expected | Actual | Status |
 |---|---|---|---|---|
-| Backend deploy | TBD | Backend deployed successfully | TBD | TBD |
-| Backend migrations | TBD | Migration completed | TBD | TBD |
-| Frontend deploy | TBD | Frontend deployed successfully | TBD | TBD |
-| Health check | TBD | Health endpoint returns 200 | TBD | TBD |
-| Live CRUD | TBD | Task flows work in production | TBD | TBD |
-| GA4 | TBD | Events fire if enabled | TBD | TBD |
+| Backend deploy | Railway auto-deploy from `main` | Backend deployed successfully | Deployment `Fix CORS preflight for Vercel frontend` active and healthy | PASS |
+| Backend migrations | `python -m alembic upgrade head` (local backend venv against public Railway DB URL) | Migration completed | Upgrades applied through `0003 (head)` | PASS |
+| Frontend deploy | Vercel deployment from `main` | Frontend deployed successfully | Deployment ready at `task-tracker-fullstack-rho.vercel.app` | PASS |
+| Health check | `GET /health` on Railway URL | Health endpoint returns 200 | 200 returned from production health endpoint | PASS |
+| Live CRUD | Run login/register/task flows on Vercel URL | Task flows work in production | Auth + CRUD flows succeeded in live environment | PASS |
+| GA4 | Check Vercel env vars and runtime events | Events fire if enabled | GA4 env var not configured; verification not applicable | N/A |
 
 ## Reliability Notes
 
@@ -87,27 +87,27 @@ Preflight Result: TBD
 ## Git Verification
 
 - Branch: main
-- git status --short result: TBD
-- Synced with remote: TBD
+- git status --short result: clean
+- Synced with remote: yes
 
 ## Issues and Resolutions
 
-- Issue: TBD
-- Resolution: TBD
-- Residual risk: TBD
+- Issue: CORS preflight returned 500 and auth endpoints returned 500 in production.
+- Resolution: Fixed CORS middleware handling and applied production DB migrations to head using public Railway database URL.
+- Residual risk: Rotate exposed database credentials and update Railway `DATABASE_URL` afterward.
 
 ## Day 13 Completion Gate
 
-- [ ] Scope complete or explicitly deferred
-- [ ] Validation complete
-- [ ] Evidence complete
+- [x] Scope complete or explicitly deferred
+- [x] Validation complete
+- [x] Evidence complete
 - [ ] Documentation complete
 - [ ] Source control complete
 
-Day 13 Gate Result: TBD
+Day 13 Gate Result: PASS (pending final docs sync + commit/push)
 
 ## Handoff to Next Day
 
-- What is done: TBD
-- What remains: TBD
-- First step for next session: TBD
+- What is done: Production backend and frontend deployed; migrations applied; health/auth/CORS/CRUD validated.
+- What remains: Optional GA4 enablement and credential rotation follow-up.
+- First step for next session: Rotate Railway DB password, update secret values, and verify health/auth post-rotation.
