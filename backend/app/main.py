@@ -26,6 +26,10 @@ def is_origin_allowed(origin: str) -> bool:
     if origin_host.endswith(".use.devtunnels.ms"):
         return True
 
+    # Allow Vercel deployments for production frontend.
+    if origin_host.endswith(".vercel.app"):
+        return True
+
     return False
 
 
@@ -37,6 +41,7 @@ class CORSMiddleware(BaseHTTPMiddleware):
         if request.method == "OPTIONS":
             if is_allowed:
                 return JSONResponse(
+                    content={"ok": True},
                     status_code=200,
                     headers={
                         "Access-Control-Allow-Origin": origin,
@@ -45,7 +50,7 @@ class CORSMiddleware(BaseHTTPMiddleware):
                         "Access-Control-Allow-Headers": "Content-Type, Authorization",
                     },
                 )
-            return JSONResponse(status_code=200)
+            return JSONResponse(content={"ok": True}, status_code=200)
 
         response = await call_next(request)
 
