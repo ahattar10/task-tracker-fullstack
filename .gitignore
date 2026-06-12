@@ -25,6 +25,9 @@ Thumbs.db
 # Local tooling
 .tools/
 
+# Day 11 backend test database
+backend/test.db
+
 # TypeScript incremental artifacts
 *.tsbuildinfo
 vite.config.js

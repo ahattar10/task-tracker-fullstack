@@ -1,6 +1,6 @@
 # Day 11 Evidence Log
 
-Date: YYYY-MM-DD
+Date: 2026-06-12
 Owner: Anthony Hattar
 Day Scope: Add automated backend/frontend tests, validate execution reliability, and document test evidence
 Environment: Windows 11, VS Code workspace terminal
@@ -19,11 +19,11 @@ Environment: Windows 11, VS Code workspace terminal
 
 ## Preconditions
 
-- [ ] Day 10 gate confirmed PASS
-- [ ] Working directory: task-tracker-fullstack root
-- [ ] Git branch clean and synced
-- [ ] Python environment available for backend tests
-- [ ] Node/npm environment available for frontend tests
+- [x] Day 10 gate confirmed PASS
+- [x] Working directory: task-tracker-fullstack root
+- [x] Git branch clean and synced
+- [x] Python environment available for backend tests
+- [x] Node/npm environment available for frontend tests
 
 Notes:
 
@@ -34,40 +34,40 @@ Notes:
 
 | Check ID | Command or Action | Expected | Actual | Status |
 |---|---|---|---|---|
-| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | TBD | TBD |
-| P2 | python --version; pip --version | Python environment available | TBD | TBD |
-| P3 | cd frontend; npm --version | Node/npm available | TBD | TBD |
-| P4 | docker compose -f infra/docker-compose.yml ps | Services available if integration checks needed | TBD | TBD |
-| P5 | Review docs/testing-checklist.md | Test scope and acceptance criteria confirmed | TBD | TBD |
+| P1 | git fetch --all --prune; git status -sb | Branch clean/synced baseline confirmed | `## main...origin/main` | PASS |
+| P2 | python --version; pip --version | Python environment available | Python 3.14.3 / pip 25.3 | PASS |
+| P3 | cd frontend; npm --version | Node/npm available | npm 11.13.0 | PASS |
+| P4 | docker compose -f infra/docker-compose.yml ps | Services available if integration tests used | backend/db/frontend healthy | PASS |
+| P5 | Review docs/testing-checklist.md | Test scope and acceptance criteria confirmed | Reviewed backend/frontend/database/manual checks | PASS |
 
-Preflight Result: TBD
+Preflight Result: PASS
 
 ## Implementation Evidence
 
 | Check ID | Command or Action | Expected | Actual | Status |
 |---|---|---|---|---|
-| I1 | Backend test framework + fixtures setup | Tests discoverable and isolated | TBD | TBD |
-| I2 | Backend auth tests (register/login paths) | Status codes and token behavior validated | TBD | TBD |
-| I3 | Backend task auth/CRUD tests | Ownership and CRUD behavior validated | TBD | TBD |
-| I4 | Frontend test framework setup | Test command runs non-interactive | TBD | TBD |
-| I5 | Frontend TaskList render test | Task list rendering behavior verified | TBD | TBD |
-| I6 | Frontend TaskForm validation test | Required field validation verified | TBD | TBD |
-| I7 | Frontend login error test | Invalid credential UX path verified | TBD | TBD |
-| I8 | Full suite execution (backend + frontend) | All Day 11 tests pass | TBD | TBD |
+| I1 | Backend test framework + fixtures setup | Tests discoverable and isolated | Added pytest/httpx/aiosqlite and local SQLite test DB scaffold | PASS |
+| I2 | Backend auth tests (register/login paths) | Status codes and token behavior validated | 4 auth tests passed | PASS |
+| I3 | Backend task auth/CRUD tests | Ownership and CRUD behavior validated | 3 task tests passed | PASS |
+| I4 | Frontend test framework setup | Test command runs non-interactive | Added Vitest, jsdom, Testing Library, and setup file | PASS |
+| I5 | Frontend TaskList render test | Task list rendering behavior verified | Rendered task row and pager state | PASS |
+| I6 | Frontend TaskForm validation test | Required field validation verified | Empty submit shows `Title is required.` | PASS |
+| I7 | Frontend login error test | Invalid credential UX path verified | Failed login shows user-facing error | PASS |
+| I8 | Full suite execution (backend + frontend) | All Day 11 tests pass | Backend 7/7, Frontend 6/6 | PASS |
 
 ## Test Run Summary
 
 | Suite | Command | Expected | Actual | Status |
 |---|---|---|---|---|
-| Backend | cd backend; pytest -q | All backend tests pass | TBD | TBD |
-| Frontend | cd frontend; npm test -- --run | All frontend tests pass | TBD | TBD |
+| Backend | cd backend; pytest -q | All backend tests pass | 7 passed in 3.50s | PASS |
+| Frontend | cd frontend; npm test -- --run | All frontend tests pass | 6 passed in 1.43s | PASS |
 
 ## Reliability Notes
 
-- Record flaky/unstable tests and mitigations
-- Record test runtime durations
-- Record any mocking/stubbing approach used
-- Record CI compatibility notes
+- Record flaky/unstable tests and mitigations: none observed
+- Record test runtime durations: backend 3.50s, frontend 1.43s
+- Record any mocking/stubbing approach used: frontend service modules mocked with Vitest; backend tests used isolated SQLite test DB
+- Record CI compatibility notes: frontend requires Vitest/jsdom dependencies; backend uses local SQLite test DB for repeatable isolation
 
 ## Documentation Updates
 
@@ -80,19 +80,19 @@ Preflight Result: TBD
 ## Git Verification
 
 - Branch: main
-- git status --short result: TBD
-- Synced with remote: TBD
+- git status --short result: modified Day 11 files pending commit
+- Synced with remote: yes at preflight baseline; current work not yet committed
 
 ## Issues and Resolutions
 
-- Issue: TBD
-- Resolution: TBD
-- Residual risk: TBD
+- Issue: Initial backend tests hit SQLite portability and cleanup issues on Windows (`now()` defaults and locked test.db).
+- Resolution: Switched ORM timestamps to `CURRENT_TIMESTAMP`, added isolated SQLite test DB scaffolding, and ignored `backend/test.db`.
+- Residual risk: FastAPI/Starlette deprecation warnings remain but do not block Day 11 validation.
 
 ## Day 11 Completion Gate
 
-- [ ] Scope complete or explicitly deferred
-- [ ] Validation complete
-- [ ] Evidence complete
+- [x] Scope complete or explicitly deferred
+- [x] Validation complete
+- [x] Evidence complete
 
-Day 11 Gate Result: TBD
+Day 11 Gate Result: PASS
