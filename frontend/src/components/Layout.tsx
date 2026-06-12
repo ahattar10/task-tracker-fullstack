@@ -17,7 +17,7 @@ export function Layout() {
     <div className="shell">
       <aside className="rail">
         <h1>Task Tracker</h1>
-        <p className="rail-subtitle">Day 6 Scaffold</p>
+        <p className="rail-subtitle">Personal task dashboard</p>
         <nav>
           <Link to="/tasks">Tasks</Link>
         </nav>
@@ -27,8 +27,8 @@ export function Layout() {
       </aside>
       <main className="panel">
         <header className="panel-header">
-          <h2>Workspace</h2>
-          <p>Frontend shell is ready for Day 7 CRUD integration.</p>
+          <h2>Your tasks</h2>
+          <p>Track, update, and complete work in one place.</p>
         </header>
         <Outlet />
       </main>
