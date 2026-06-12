@@ -13,7 +13,8 @@
 - ✅ Day 9: Dockerize Services
 - ✅ Day 10: Reliability Extras
 - ✅ Day 11: Automated Testing
-- 🔲 Day 12: CI/CD (GitHub Actions)
+- ✅ Day 12: CI/CD (GitHub Actions)
+- 🔲 Day 13: Deployment
 
 ---
 
@@ -304,23 +305,7 @@ Done check:
 
 ---
 
-### Day 12 — CI/CD (GitHub Actions) Planned
-Time: 3-6 hrs | Difficulty: Medium-Hard
-
-- [ ] Create .github/workflows/ci.yml
-- [ ] Backend test job with Postgres service
-- [ ] Frontend test job
-- [ ] CI badge in README (green "passing")
-- [ ] Optional: linting (flake8, eslint)
-
-Done check:
-- Push to GitHub triggers pipeline automatically
-- All steps pass
-- Badge shows green "passing"
-
----
-
-### Day 13 — Deployment
+### Day 13 — Deployment Planned
 Time: 4-7 hrs | Difficulty: Medium
 
 - [ ] Deploy backend to Railway
