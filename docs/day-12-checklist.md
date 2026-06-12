@@ -21,8 +21,8 @@ Medium-Hard
 ## What To Do
 
 - Create `.github/workflows/ci.yml`
-- Add a backend job that runs tests with a Postgres service
-- Add a frontend job that runs the frontend test suite
+- Add a backend job that runs migrations and tests with a Postgres service
+- Add a frontend job that runs the frontend test suite and production build
 - Add or verify a green CI badge in `README.md`
 - Optionally add lint jobs if they are low-risk and fast
 - Record all validation and outcomes in `docs/day-12-evidence-log.md`
@@ -88,22 +88,26 @@ Acceptance Criteria:
 
 - [ ] Start a Postgres service for backend tests
 - [ ] Install backend dependencies
+- [ ] Run database migrations before backend tests
 - [ ] Run backend tests with the Day 11 command
 - [ ] Ensure backend job fails clearly on test errors
 
 Acceptance Criteria:
 - Backend tests run successfully in CI
 - Postgres service is used for the backend job
+- Migrations complete successfully before tests run
 - Failure output is understandable
 
 ### Step 3: Frontend CI Job
 
 - [ ] Install frontend dependencies
 - [ ] Run frontend tests with the Day 11 command
+- [ ] Run the production frontend build
 - [ ] Ensure frontend job fails clearly on test errors
 
 Acceptance Criteria:
 - Frontend tests run successfully in CI
+- Frontend production build succeeds
 - Job is deterministic and non-interactive
 
 ### Step 4: README Badge
@@ -147,6 +151,8 @@ Acceptance Criteria:
 - [ ] CI workflow created and passing
 - [ ] Backend job verified with Postgres service
 - [ ] Frontend job verified
+- [ ] Backend migrations verified in CI
+- [ ] Frontend build verified in CI
 - [ ] README badge added or confirmed
 - [ ] Day 12 evidence log complete
 - [ ] Day 12 updates committed and pushed

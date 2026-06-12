@@ -9,8 +9,8 @@ Environment: Windows 11, VS Code workspace terminal
 
 - Planned outcomes for this day:
   - GitHub Actions workflow created and passing
-  - Backend test job runs with a Postgres service
-  - Frontend test job runs successfully
+  - Backend test job runs migrations and tests with a Postgres service
+  - Frontend test job runs successfully and the production build passes
   - README CI badge added or confirmed
   - Evidence captured for all CI checks
 - Out-of-scope items:
@@ -49,17 +49,21 @@ Preflight Result: TBD
 |---|---|---|---|---|
 | I1 | CI workflow file created or updated | Workflow exists and is readable | TBD | TBD |
 | I2 | Backend job with Postgres service | Backend tests run successfully in CI | TBD | TBD |
-| I3 | Frontend job | Frontend tests run successfully in CI | TBD | TBD |
-| I4 | README CI badge | Badge links to workflow and shows passing status | TBD | TBD |
-| I5 | Optional linting decision recorded | Linting enabled or explicitly deferred | TBD | TBD |
-| I6 | Final workflow trigger/verification | Push or run confirms pipeline passes | TBD | TBD |
+| I3 | Backend migrations | Database schema migration runs successfully in CI | TBD | TBD |
+| I4 | Frontend job | Frontend tests run successfully in CI | TBD | TBD |
+| I5 | Frontend production build | Production build succeeds in CI | TBD | TBD |
+| I6 | README CI badge | Badge links to workflow and shows passing status | TBD | TBD |
+| I7 | Optional linting decision recorded | Linting enabled or explicitly deferred | TBD | TBD |
+| I8 | Final workflow trigger/verification | Push or run confirms pipeline passes | TBD | TBD |
 
 ## CI Run Summary
 
 | Job | Command or Trigger | Expected | Actual | Status |
 |---|---|---|---|---|
 | Backend | TBD | Backend CI checks pass | TBD | TBD |
+| Migrations | TBD | Database migrations pass | TBD | TBD |
 | Frontend | TBD | Frontend CI checks pass | TBD | TBD |
+| Frontend Build | TBD | Frontend production build passes | TBD | TBD |
 | Linting | TBD | Lint jobs pass or are intentionally skipped | TBD | TBD |
 
 ## Reliability Notes
