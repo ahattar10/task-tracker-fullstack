@@ -7,13 +7,13 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy requirements and install Python dependencies
-COPY requirements.txt .
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY app/ app/
-COPY alembic/ alembic/
-COPY alembic.ini .
+COPY backend/app/ app/
+COPY backend/alembic/ alembic/
+COPY backend/alembic.ini .
 
 # Expose the API port
 EXPOSE 8000
