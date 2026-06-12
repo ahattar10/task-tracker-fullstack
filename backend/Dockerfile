@@ -35,4 +35,4 @@ ENV DATABASE_URL=postgresql+psycopg://taskuser:taskpass@db:5432/tasktracker
 # JWT_SECRET_KEY must be set via compose or runtime environment
 
 # Start uvicorn server
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
