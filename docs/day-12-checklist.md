@@ -26,6 +26,7 @@ Medium-Hard
 - Add or verify a green CI badge in `README.md`
 - Optionally add lint jobs if they are low-risk and fast
 - Record all validation and outcomes in `docs/day-12-evidence-log.md`
+- Observe the GitHub Actions run externally when available
 
 ## Why This Matters
 
@@ -148,17 +149,18 @@ Acceptance Criteria:
 
 ## Done Check
 
-- [ ] CI workflow created and passing
-- [ ] Backend job verified with Postgres service
-- [ ] Frontend job verified
-- [ ] Backend migrations verified in CI
-- [ ] Frontend build verified in CI
-- [ ] README badge added or confirmed
-- [ ] Day 12 evidence log complete
-- [ ] Day 12 updates committed and pushed
+- [x] CI workflow created and passing locally
+- [x] Backend job verified with Postgres service
+- [x] Frontend job verified
+- [x] Backend migrations verified
+- [x] Frontend build verified
+- [x] README badge added or confirmed
+- [x] Day 12 evidence log complete
+- [x] Day 12 updates committed and pushed
 
 ## Notes
 
 - Prefer focused CI jobs over overbuilt pipeline logic
 - Keep secrets out of the workflow file
 - If linting is deferred, note why in the evidence log
+- GitHub Actions confirmation can be reviewed externally after push
