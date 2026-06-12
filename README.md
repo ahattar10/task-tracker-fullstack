@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml/badge.svg)](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml)
 
-Day 1 setup for a portfolio project.
+Full-stack task management app built over 10 days with Docker, FastAPI, React, and PostgreSQL. Days 1-10 complete; Day 11 (automated testing) in planning.
 
 ## Goal
 Build a full-stack task management app with:

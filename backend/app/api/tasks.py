@@ -1,7 +1,7 @@
 from math import ceil
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.auth import get_current_user
@@ -56,8 +56,8 @@ async def list_tasks(
             (Task.title.ilike(search_term)) | (Task.description.ilike(search_term))
         )
 
-    total_result = await session.execute(select(Task.id).where(*filters))
-    total = len(list(total_result.scalars().all()))
+    total_result = await session.execute(select(func.count(Task.id)).where(*filters))
+    total = total_result.scalar()
 
     offset = (page - 1) * limit
     result = await session.execute(

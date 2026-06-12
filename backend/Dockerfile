@@ -32,7 +32,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 # Override defaults to work with compose network
 ENV APP_HOST=0.0.0.0
 ENV DATABASE_URL=postgresql+psycopg://taskuser:taskpass@db:5432/tasktracker
-ENV JWT_SECRET_KEY=docker-dev-secret-key-change-in-production
+# JWT_SECRET_KEY must be set via compose or runtime environment
 
 # Start uvicorn server
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
