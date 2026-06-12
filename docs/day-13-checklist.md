@@ -56,6 +56,14 @@ A successful deployment proves the project works beyond local and CI validation:
 - Production environment variables are identified
 - Database migration command is understood
 
+## Short Day 13 Preflight Checklist
+
+- Railway access confirmed
+- Vercel access confirmed
+- Production environment variables gathered
+- Production migration command confirmed
+- Git status clean and synced
+
 ---
 
 ## Pre-Execution Validation Runs (Required)
