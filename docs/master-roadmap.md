@@ -305,16 +305,16 @@ Done check:
 
 ---
 
-### Day 13 — Deployment Planned
+### Day 13 — Deployment Complete
 Time: 4-7 hrs | Difficulty: Medium
 
-- [ ] Deploy backend to Railway
-- [ ] Set environment variables in platform dashboard
-- [ ] Run database migrations
-- [ ] Deploy frontend to Vercel
-- [ ] Verify: GET /health returns 200
-- [ ] Verify: full CRUD works on live URL
-- [ ] GA4 events fire in production
+- [x] Deploy backend to Railway
+- [x] Set environment variables in platform dashboard
+- [x] Run database migrations
+- [x] Deploy frontend to Vercel
+- [x] Verify: GET /health returns 200
+- [x] Verify: full CRUD works on live URL
+- [ ] GA4 events fire in production (N/A if GA4 is not enabled)
 
 Done check:
 - Live URL is shareable
