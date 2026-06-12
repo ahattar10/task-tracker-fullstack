@@ -90,6 +90,8 @@ Preflight Rule: Before Step 1 coding on any day, run start-of-day preflight and 
 
 ## Day 11
 
+Day 11 status note: if execution has not started yet, `day-11-evidence-log.md` should remain template-style with `TBD` fields.
+
 1. `day-11-checklist.md`
 2. `master-roadmap.md` (Day 11 section)
 3. `testing-checklist.md`
@@ -111,6 +113,7 @@ Binder Sync Cadence:
 - Backend setup and run steps: `setup-run-guide.md`
 - Work-machine policy-safe venv workflow: `setup-run-guide.md` and `troubleshooting-notes.md`
 - Git and GitHub setup/sync commands: `setup-run-guide.md`
+- End-of-day shutdown and next-day restart: `shutdown-restart-checklist.md`
 - Day close quality gate (required): `day-completion-gate.md`
 - Evidence log starter template: `day-evidence-log-template.md`
 

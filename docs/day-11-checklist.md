@@ -26,6 +26,10 @@ Hard
 - Record Day 11 evidence with command outputs and PASS/FAIL results
 - Update docs where needed for test setup and execution
 
+Standard test commands for Day 11 execution (use these unless project scripts change):
+- Backend: `cd backend; pytest -q`
+- Frontend: `cd frontend; npm test -- --run`
+
 ## Why This Matters
 
 Automated tests reduce regressions and improve confidence:
@@ -99,7 +103,7 @@ Acceptance Criteria:
 - [ ] test_create_task_authenticated -> 201
 - [ ] test_create_task_no_auth -> 401
 - [ ] test_get_tasks_returns_user_tasks_only
-- [ ] test_get_task_other_user -> 403/404 policy verified
+- [ ] test_get_task_other_user -> 404 (resource hidden policy)
 - [ ] test_update_task_success -> 200
 - [ ] test_delete_task_success -> 204
 
@@ -127,7 +131,7 @@ Acceptance Criteria:
 - UI behavior matches expected user flows
 - Tests do not depend on external network availability
 
-### Step 6: End-to-End Test Run and Documentation
+### Step 6: Full Suite Run and Documentation
 
 - [ ] Run full backend test suite
 - [ ] Run full frontend test suite

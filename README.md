@@ -29,6 +29,7 @@ Build a full-stack task management app with:
 - Day 8: Complete
 - Day 9: Complete
 - Day 10: Complete
+- Day 11: Planned (checklist/evidence template ready)
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)
@@ -39,6 +40,7 @@ Build a full-stack task management app with:
 - [Project architecture](docs/project-architecture.md)
 - [API contract draft](docs/api-contract.md)
 - [Setup and run guide](docs/setup-run-guide.md)
+- [Shutdown and restart checklist](docs/shutdown-restart-checklist.md)
 - [Troubleshooting notes](docs/troubleshooting-notes.md)
 - [Testing checklist](docs/testing-checklist.md)
 - [Day completion gate](docs/day-completion-gate.md)
@@ -50,6 +52,7 @@ Build a full-stack task management app with:
 - [Day 5 checklist](docs/day-5-checklist.md)
 - [Day 5 evidence log](docs/day-5-evidence-log.md)
 - [Day 6 checklist](docs/day-6-checklist.md)
+- [Day 6 evidence log](docs/day-6-evidence-log.md)
 - [Day 4 evidence log](docs/day-4-evidence-log.md)
 - [Day 7 checklist](docs/day-7-checklist.md)
 - [Day 7 evidence log](docs/day-7-evidence-log.md)
@@ -59,6 +62,8 @@ Build a full-stack task management app with:
 - [Day 9 evidence log](docs/day-9-evidence-log.md)
 - [Day 10 checklist](docs/day-10-checklist.md)
 - [Day 10 evidence log](docs/day-10-evidence-log.md)
+- [Day 11 checklist](docs/day-11-checklist.md)
+- [Day 11 evidence log](docs/day-11-evidence-log.md)
 
 ## Automation
 - CI workflow: `.github/workflows/ci.yml`

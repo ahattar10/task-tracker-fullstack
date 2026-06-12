@@ -286,7 +286,7 @@ Backend tests (aim for 8-10):
 - [ ] test_create_task_authenticated → 201
 - [ ] test_create_task_no_auth → 401
 - [ ] test_get_tasks_returns_user_tasks_only
-- [ ] test_get_task_other_user → 403 or 404
+- [ ] test_get_task_other_user → 404 (resource hidden policy)
 - [ ] test_update_task_success → 200
 - [ ] test_delete_task_success → 204
 

@@ -59,8 +59,8 @@ Preflight Result: TBD
 
 | Suite | Command | Expected | Actual | Status |
 |---|---|---|---|---|
-| Backend | TBD | All backend tests pass | TBD | TBD |
-| Frontend | TBD | All frontend tests pass | TBD | TBD |
+| Backend | cd backend; pytest -q | All backend tests pass | TBD | TBD |
+| Frontend | cd frontend; npm test -- --run | All frontend tests pass | TBD | TBD |
 
 ## Reliability Notes
 
@@ -74,7 +74,8 @@ Preflight Result: TBD
 - Checklist updated: docs/day-11-checklist.md
 - Evidence log updated: docs/day-11-evidence-log.md
 - Testing guidance updated: docs/testing-checklist.md (if changed)
-- Roadmap/index updates: TBD
+- Roadmap updated: docs/master-roadmap.md (if changed)
+- Doc index updated: docs/doc-index.md (if changed)
 
 ## Git Verification
 
