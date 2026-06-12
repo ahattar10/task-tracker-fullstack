@@ -54,7 +54,7 @@ Preflight Result: PASS
 | I5 | Frontend production build | Production build succeeds in CI | `npm run build` completed successfully | PASS |
 | I6 | README CI badge | Badge links to workflow and shows passing status | Badge points to `ci.yml` workflow | PASS |
 | I7 | Optional linting decision recorded | Linting enabled or explicitly deferred | Deferred; not required for Day 12 scope | PASS |
-| I8 | Final workflow trigger/verification | Push or run confirms pipeline passes | Local validation complete; CI run to be observed externally | DEFERRED |
+| I8 | Final workflow trigger/verification | Push or run confirms pipeline passes | GitHub Actions run completed successfully | PASS |
 
 ## CI Run Summary
 
@@ -71,7 +71,7 @@ Preflight Result: PASS
 - Record workflow runtime durations: backend 3.50s, frontend 1.41s, build 0.59s
 - Record any CI-only environment differences: backend migration used local Postgres and the test suite used SQLite fallback when `DATABASE_URL` was not set
 - Record any caching or setup optimizations used: none beyond default npm cache in workflow
-- Record failure triage notes if the first run does not pass: no blocking failures in local validation
+- Record failure triage notes if the first run does not pass: no blocking failures in local validation; GitHub Actions run completed successfully
 
 ## Documentation Updates
 
@@ -107,5 +107,5 @@ Day 12 Gate Result: PASS
 ## Handoff to Next Day
 
 - What is done: Day 12 CI workflow hardened, backend and frontend validations passed locally, docs updated, and repo pushed clean.
-- What remains: Observe the GitHub Actions run externally if you want a remote CI confirmation.
-- First step for next session: Review the CI run on GitHub and, if needed, capture it in this evidence log.
+- What remains: None for Day 12.
+- First step for next session: Move on to Day 13 only when ready.
