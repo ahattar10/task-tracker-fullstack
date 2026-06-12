@@ -3,7 +3,7 @@ from pathlib import Path
 
 os.environ["APP_ENV"] = "testing"
 os.environ["JWT_SECRET_KEY"] = "test-secret-key"
-os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///./test.db"
+os.environ.setdefault("DATABASE_URL", "sqlite+aiosqlite:///./test.db")
 
 
 def pytest_sessionfinish(session, exitstatus):

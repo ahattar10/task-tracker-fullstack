@@ -1,4 +1,4 @@
-# Documentation Index (Day 1 to Day 11)
+# Documentation Index (Day 1 to Day 12)
 
 Use this order for review and execution.
 
@@ -97,6 +97,15 @@ Day 11 status note: if execution has not started yet, `day-11-evidence-log.md` s
 3. `testing-checklist.md`
 4. `day-11-evidence-log.md`
 5. `troubleshooting-notes.md` (if blocked)
+
+## Day 12
+
+1. `day-12-checklist.md`
+2. `master-roadmap.md` (Day 12 section)
+3. `project-plan.md` (Day 12 section)
+4. `README.md` (CI badge section)
+5. `day-12-evidence-log.md`
+6. `troubleshooting-notes.md` (if blocked)
 
 ## Rule
 

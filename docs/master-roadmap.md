@@ -12,6 +12,8 @@
 - ✅ Day 8: UX Polish and Error States
 - ✅ Day 9: Dockerize Services
 - ✅ Day 10: Reliability Extras
+- ✅ Day 11: Automated Testing
+- 🔲 Day 12: CI/CD (GitHub Actions)
 
 ---
 
@@ -302,7 +304,7 @@ Done check:
 
 ---
 
-### Day 12 — CI/CD (GitHub Actions)
+### Day 12 — CI/CD (GitHub Actions) Planned
 Time: 3-6 hrs | Difficulty: Medium-Hard
 
 - [ ] Create .github/workflows/ci.yml

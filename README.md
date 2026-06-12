@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml/badge.svg)](https://github.com/ahattar10/task-tracker-fullstack/actions/workflows/ci.yml)
 
-Full-stack task management app built over 10 days with Docker, FastAPI, React, and PostgreSQL. Days 1-10 complete; Day 11 (automated testing) in planning.
+Full-stack task management app built over 12 days with Docker, FastAPI, React, PostgreSQL, automated testing, and CI. Days 1-11 complete; Day 12 (CI/CD) in planning.
 
 ## Goal
 Build a full-stack task management app with:
@@ -29,7 +29,8 @@ Build a full-stack task management app with:
 - Day 8: Complete
 - Day 9: Complete
 - Day 10: Complete
-- Day 11: Planned (checklist/evidence template ready)
+- Day 11: Complete
+- Day 12: Planned (CI/CD checklist/evidence template ready)
 
 ## Roadmap
 - [14-day project plan](docs/project-plan.md)
@@ -64,6 +65,8 @@ Build a full-stack task management app with:
 - [Day 10 evidence log](docs/day-10-evidence-log.md)
 - [Day 11 checklist](docs/day-11-checklist.md)
 - [Day 11 evidence log](docs/day-11-evidence-log.md)
+- [Day 12 checklist](docs/day-12-checklist.md)
+- [Day 12 evidence log](docs/day-12-evidence-log.md)
 
 ## Automation
 - CI workflow: `.github/workflows/ci.yml`

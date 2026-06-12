@@ -8,8 +8,25 @@ on:
 
 jobs:
   backend:
-    name: Backend checks
+    name: Backend tests
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: taskuser
+          POSTGRES_PASSWORD: taskpass
+          POSTGRES_DB: tasktracker
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready -U taskuser -d tasktracker
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql+psycopg://taskuser:taskpass@localhost:5432/tasktracker
+      JWT_SECRET_KEY: test-secret-key
     defaults:
       run:
         working-directory: backend
@@ -27,14 +44,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Compile backend source
-        run: python -m compileall app
-
-      - name: Verify app import
-        run: python -c "from app.main import app; print(app.title)"
+      - name: Run backend tests
+        run: python -m pytest -q
 
   frontend:
-    name: Frontend build
+    name: Frontend tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -53,5 +67,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build frontend
-        run: npm run build
+      - name: Run frontend tests
+        run: npm test -- --run
