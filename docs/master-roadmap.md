@@ -435,6 +435,7 @@ Time: 1-2 hrs | Difficulty: Easy
 - [ ] Verify app.anthony-hattar.com loads task tracker
 - [ ] Update portfolio "View Live" link to app.anthony-hattar.com
 - [ ] Future auth enhancement: add signup email flow (verification or welcome email) when email delivery is in scope
+- [ ] Future task enhancement: add task due date and completion timestamp support
 
 Done check:
 - app.anthony-hattar.com → task tracker loads
