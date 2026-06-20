@@ -1,4 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from collections import defaultdict, deque
+from time import monotonic
+
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import JWTError
 from sqlalchemy import select
@@ -16,6 +19,43 @@ from app.schemas import TokenResponse, UserLogin, UserRead, UserRegister
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 security = HTTPBearer(auto_error=False)
+
+AUTH_RATE_LIMIT_MAX_REQUESTS = 12
+AUTH_RATE_LIMIT_WINDOW_SECONDS = 60
+_auth_attempts: dict[str, deque[float]] = defaultdict(deque)
+
+
+def clear_auth_rate_limits() -> None:
+    """Test helper to clear in-memory auth rate limits."""
+    _auth_attempts.clear()
+
+
+def _client_key(request: Request) -> str:
+    forwarded_for = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+    if forwarded_for:
+        return forwarded_for
+
+    if request.client and request.client.host:
+        return request.client.host
+
+    return "unknown"
+
+
+def _enforce_auth_rate_limit(request: Request) -> None:
+    now = monotonic()
+    key = _client_key(request)
+    attempts = _auth_attempts[key]
+
+    while attempts and (now - attempts[0]) > AUTH_RATE_LIMIT_WINDOW_SECONDS:
+        attempts.popleft()
+
+    if len(attempts) >= AUTH_RATE_LIMIT_MAX_REQUESTS:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Too many authentication attempts. Please try again shortly.",
+        )
+
+    attempts.append(now)
 
 
 async def get_current_user(
@@ -51,8 +91,11 @@ async def get_current_user(
 @router.post("/register", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 async def register(
     payload: UserRegister,
+    request: Request,
     session: AsyncSession = Depends(get_session),
 ) -> User:
+    _enforce_auth_rate_limit(request)
+
     email = payload.email.strip().lower()
     existing = await session.execute(select(User).where(User.email == email))
     if existing.scalar_one_or_none() is not None:
@@ -71,8 +114,11 @@ async def register(
 @router.post("/login", response_model=TokenResponse)
 async def login(
     payload: UserLogin,
+    request: Request,
     session: AsyncSession = Depends(get_session),
 ) -> TokenResponse:
+    _enforce_auth_rate_limit(request)
+
     email = payload.email.strip().lower()
     result = await session.execute(select(User).where(User.email == email))
     user = result.scalar_one_or_none()

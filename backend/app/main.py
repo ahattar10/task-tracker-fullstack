@@ -63,11 +63,31 @@ class CORSMiddleware(BaseHTTPMiddleware):
         if is_allowed:
             response.headers["Access-Control-Allow-Origin"] = origin
             response.headers["Access-Control-Allow-Credentials"] = "true"
+            response.headers["Vary"] = "Origin"
+
+        return response
+
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        response = await call_next(request)
+
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
+
+        proto = request.headers.get("x-forwarded-proto", request.url.scheme)
+        if proto == "https":
+            response.headers["Strict-Transport-Security"] = (
+                "max-age=31536000; includeSubDomains"
+            )
 
         return response
 
 
 app.add_middleware(CORSMiddleware)
+app.add_middleware(SecurityHeadersMiddleware)
 
 app.include_router(auth_router)
 app.include_router(tasks_router)
@@ -80,6 +100,10 @@ async def startup_validation() -> None:
         raise RuntimeError(
             "JWT_SECRET_KEY environment variable is not set. "
             "This is required for authentication. Please set it before running the app."
+        )
+    if len(settings.jwt_secret_key) < 32:
+        raise RuntimeError(
+            "JWT_SECRET_KEY must be at least 32 characters long for secure token signing."
         )
 
 

@@ -3,6 +3,7 @@ import asyncio
 from fastapi import status
 from fastapi.testclient import TestClient
 
+from app.api.auth import clear_auth_rate_limits
 from app.db import Base, engine
 from app.main import app
 
@@ -14,6 +15,7 @@ def setup_function() -> None:
             await connection.run_sync(Base.metadata.create_all)
 
     asyncio.run(reset_database())
+    clear_auth_rate_limits()
 
 
 def register_and_login(client: TestClient, email: str) -> str:

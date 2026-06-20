@@ -3,6 +3,7 @@ import asyncio
 from fastapi import status
 from fastapi.testclient import TestClient
 
+from app.api.auth import clear_auth_rate_limits
 from app.db import Base, engine
 from app.main import app
 
@@ -14,6 +15,7 @@ def setup_function() -> None:
             await connection.run_sync(Base.metadata.create_all)
 
     asyncio.run(reset_database())
+    clear_auth_rate_limits()
 
 
 def register_user(client: TestClient, email: str, password: str = "Password123!"):
@@ -96,3 +98,34 @@ def test_cors_allows_custom_portfolio_subdomain():
         == "https://app.anthony-hattar.com"
     )
     assert response.headers["Access-Control-Allow-Credentials"] == "true"
+
+
+def test_security_headers_present():
+    client = TestClient(app)
+
+    response = client.get("/health")
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.headers["X-Content-Type-Options"] == "nosniff"
+    assert response.headers["X-Frame-Options"] == "DENY"
+    assert response.headers["Referrer-Policy"] == "strict-origin-when-cross-origin"
+
+
+def test_auth_rate_limit_blocks_excessive_attempts():
+    client = TestClient(app)
+
+    for _ in range(12):
+        response = client.post(
+            "/auth/login",
+            json={"email": "nobody@example.com", "password": "WrongPass123!"},
+        )
+        assert response.status_code in (
+            status.HTTP_401_UNAUTHORIZED,
+            status.HTTP_429_TOO_MANY_REQUESTS,
+        )
+
+    final_response = client.post(
+        "/auth/login",
+        json={"email": "nobody@example.com", "password": "WrongPass123!"},
+    )
+    assert final_response.status_code == status.HTTP_429_TOO_MANY_REQUESTS

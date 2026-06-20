@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 os.environ["APP_ENV"] = "testing"
-os.environ["JWT_SECRET_KEY"] = "test-secret-key"
+os.environ["JWT_SECRET_KEY"] = "test-secret-key-which-is-at-least-32-chars"
 os.environ["DATABASE_URL"] = os.environ.get(
     "TEST_DATABASE_URL",
     "sqlite+aiosqlite:///./test.db",

@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 TaskStatus = Literal["todo", "in_progress", "done"]
 TaskPriority = Literal["low", "medium", "high"]
@@ -44,6 +44,21 @@ class TaskListResponse(BaseModel):
 class UserRegister(BaseModel):
     email: str = Field(..., min_length=3, max_length=255)
     password: str = Field(..., min_length=8, max_length=128)
+
+    @field_validator("password")
+    @classmethod
+    def validate_password_complexity(cls, value: str) -> str:
+        has_lower = any(ch.islower() for ch in value)
+        has_upper = any(ch.isupper() for ch in value)
+        has_digit = any(ch.isdigit() for ch in value)
+        has_special = any(not ch.isalnum() for ch in value)
+
+        if not (has_lower and has_upper and has_digit and has_special):
+            raise ValueError(
+                "Password must include uppercase, lowercase, number, and special character"
+            )
+
+        return value
 
 
 class UserLogin(BaseModel):
